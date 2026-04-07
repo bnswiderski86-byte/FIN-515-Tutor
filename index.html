@@ -7,543 +7,174 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #0d1b2a;
-  --navy-2: #1a2e42;
-  --navy-3: #243d54;
-  --gold: #c9a84c;
-  --gold-light: #f0d485;
-  --gold-dim: #7a6330;
-  --cream: #faf6ef;
-  --cream-2: #f0e8d8;
-  --cream-3: #e4d5be;
-  --jade: #2d6a4f;
-  --jade-light: #95d5b2;
-  --rose: #8b2635;
-  --rose-light: #f4a0a8;
-  --slate: #4a5568;
-  --slate-light: #cbd5e0;
-  --white: #ffffff;
-  --text: #0d1b2a;
-  --text-muted: #5a6a7a;
-  --text-dim: #8a9aaa;
-  --radius: 10px;
-  --radius-lg: 16px;
-  --shadow: 0 2px 12px rgba(13,27,42,0.10);
-  --shadow-lg: 0 8px 32px rgba(13,27,42,0.16);
+  --navy: #0d1b2a; --navy-2: #1a2e42; --navy-3: #243d54;
+  --gold: #c9a84c; --gold-light: #f0d485; --gold-dim: #7a6330;
+  --cream: #faf6ef; --cream-2: #f0e8d8; --cream-3: #e4d5be;
+  --jade: #2d6a4f; --jade-light: #95d5b2;
+  --rose: #8b2635; --rose-light: #f4a0a8;
+  --slate: #4a5568; --slate-light: #cbd5e0;
+  --white: #ffffff; --text: #0d1b2a; --text-muted: #5a6a7a; --text-dim: #8a9aaa;
+  --radius: 10px; --radius-lg: 16px;
+  --shadow: 0 2px 12px rgba(13,27,42,0.10); --shadow-lg: 0 8px 32px rgba(13,27,42,0.16);
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;font-size:15px;line-height:1.65;}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* HEADER */
+.site-header{background:var(--navy);position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold);}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.logo-main{font-family:'DM Serif Display',serif;color:var(--gold);font-size:22px;letter-spacing:-0.02em;}
+.logo-sub{color:var(--slate-light);font-size:12px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;margin-left:10px;}
+.progress-pill{background:var(--navy-2);border:1px solid var(--navy-3);border-radius:20px;padding:4px 14px;font-family:'DM Mono',monospace;font-size:12px;color:var(--gold);}
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--text);
-  min-height: 100vh;
-  font-size: 15px;
-  line-height: 1.65;
-}
+/* LAYOUT */
+.layout{max-width:1100px;margin:0 auto;padding:2rem;display:grid;grid-template-columns:260px 1fr;gap:2rem;align-items:start;}
 
-/* ── HEADER ── */
-.site-header {
-  background: var(--navy);
-  padding: 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 2px solid var(--gold);
-}
-.header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-}
-.logo {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-.logo-main {
-  font-family: 'DM Serif Display', serif;
-  color: var(--gold);
-  font-size: 22px;
-  letter-spacing: -0.02em;
-}
-.logo-sub {
-  color: var(--slate-light);
-  font-size: 12px;
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.header-progress {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--slate-light);
-  font-size: 12px;
-}
-.progress-pill {
-  background: var(--navy-2);
-  border: 1px solid var(--navy-3);
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  color: var(--gold);
-}
+/* SIDEBAR */
+.sidebar{position:sticky;top:80px;}
+.sidebar-section{margin-bottom:1.5rem;}
+.sidebar-label{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.5rem;padding-left:2px;}
+.ch-btn{display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;border:none;border-radius:var(--radius);background:transparent;cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-muted);transition:all 0.15s;margin-bottom:3px;}
+.ch-btn:hover{background:var(--cream-2);color:var(--text);}
+.ch-btn.active{background:var(--navy);color:var(--gold);font-weight:500;}
+.ch-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.ch-num{font-family:'DM Mono',monospace;font-size:10px;opacity:0.6;}
+.q-list{list-style:none;}
+.q-item{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:var(--radius);cursor:pointer;font-size:13px;color:var(--text-muted);transition:all 0.15s;margin-bottom:2px;border:1px solid transparent;}
+.q-item:hover{background:var(--cream-2);color:var(--text);}
+.q-item.active{background:var(--cream-2);border-color:var(--cream-3);color:var(--text);font-weight:500;}
+.q-item.done{color:var(--jade);}
+.q-check{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--slate-light);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;}
+.q-item.done .q-check{background:var(--jade);border-color:var(--jade);color:white;}
 
-/* ── LAYOUT ── */
-.layout {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 2rem;
-  align-items: start;
-}
+/* MAIN */
+.main{min-width:0;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.5rem;}
+.stat-card{background:var(--white);border:1px solid var(--cream-3);border-radius:var(--radius);padding:0.75rem 1rem;text-align:center;}
+.stat-val{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:var(--navy);}
+.stat-lbl{font-size:11px;color:var(--text-dim);margin-top:2px;}
 
-/* ── SIDEBAR ── */
-.sidebar {
-  position: sticky;
-  top: 80px;
-}
-.sidebar-section { margin-bottom: 1.5rem; }
-.sidebar-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 0.5rem;
-  padding-left: 2px;
-}
-.ch-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 10px 14px;
-  border: none;
-  border-radius: var(--radius);
-  background: transparent;
-  cursor: pointer;
-  text-align: left;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  color: var(--text-muted);
-  transition: all 0.15s;
-  margin-bottom: 3px;
-}
-.ch-btn:hover { background: var(--cream-2); color: var(--text); }
-.ch-btn.active {
-  background: var(--navy);
-  color: var(--gold);
-  font-weight: 500;
-}
-.ch-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.ch-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  opacity: 0.6;
-}
+/* QUESTION CARD */
+.q-card{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;margin-bottom:1.5rem;border:1px solid var(--cream-3);}
+.q-card-header{background:var(--navy);padding:1.5rem 2rem;display:flex;flex-direction:column;gap:8px;}
+.q-card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.badge{font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:3px 10px;border-radius:20px;}
+.badge-num{background:var(--gold-dim);color:var(--gold-light);}
+.badge-diff-b{background:rgba(45,106,79,0.3);color:var(--jade-light);}
+.badge-diff-i{background:rgba(139,38,53,0.3);color:var(--rose-light);}
+.badge-topic{background:var(--navy-2);color:var(--slate-light);}
+.q-card-title{font-family:'DM Serif Display',serif;color:var(--white);font-size:20px;line-height:1.3;}
+.q-card-body{padding:1.5rem 2rem;}
 
-.q-list { list-style: none; }
-.q-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 13px;
-  color: var(--text-muted);
-  transition: all 0.15s;
-  margin-bottom: 2px;
-  border: 1px solid transparent;
-}
-.q-item:hover { background: var(--cream-2); color: var(--text); }
-.q-item.active {
-  background: var(--cream-2);
-  border-color: var(--cream-3);
-  color: var(--text);
-  font-weight: 500;
-}
-.q-item.done { color: var(--jade); }
-.q-check {
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  border: 1.5px solid var(--slate-light);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9px;
-}
-.q-item.done .q-check {
-  background: var(--jade);
-  border-color: var(--jade);
-  color: white;
-}
+/* SCENARIO */
+.scenario-box{background:var(--cream);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:14px;line-height:1.7;}
+.scenario-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px;}
 
-/* ── MAIN CONTENT ── */
-.main { min-width: 0; }
+/* DEEP EXPLAINER */
+.deep-explainer{background:var(--navy);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.25rem;}
+.deep-explainer-title{font-family:'DM Serif Display',serif;color:var(--gold);font-size:16px;margin-bottom:0.75rem;display:flex;align-items:center;gap:8px;}
+.deep-explainer-title span{font-size:13px;font-weight:400;color:var(--slate-light);font-family:'DM Sans',sans-serif;}
+.deep-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.deep-card{background:var(--navy-2);border-radius:var(--radius);padding:0.9rem 1rem;border:1px solid var(--navy-3);}
+.deep-card-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px;}
+.deep-card-text{font-size:13px;color:var(--slate-light);line-height:1.6;}
+.deep-card-text em{color:var(--gold-light);font-style:normal;font-weight:500;}
 
-/* ── QUESTION CARD ── */
-.q-card {
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-  border: 1px solid var(--cream-3);
-}
-.q-card-header {
-  background: var(--navy);
-  padding: 1.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.q-card-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.badge {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 20px;
-}
-.badge-num { background: var(--gold-dim); color: var(--gold-light); }
-.badge-diff-b { background: rgba(45,106,79,0.3); color: var(--jade-light); }
-.badge-diff-i { background: rgba(139,38,53,0.3); color: var(--rose-light); }
-.badge-topic { background: var(--navy-2); color: var(--slate-light); }
-.q-card-title {
-  font-family: 'DM Serif Display', serif;
-  color: var(--white);
-  font-size: 20px;
-  line-height: 1.3;
-}
-.q-card-body { padding: 1.5rem 2rem; }
+/* CONTEXT TABS */
+.context-section{margin-bottom:1.25rem;}
+.context-tabs{display:flex;gap:4px;border-bottom:1px solid var(--cream-3);}
+.ctx-tab{padding:7px 16px;border:none;background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-dim);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.15s;}
+.ctx-tab:hover{color:var(--text-muted);}
+.ctx-tab.active{color:var(--navy);border-bottom-color:var(--gold);font-weight:500;}
+.ctx-content{background:var(--cream);padding:1rem 1.25rem;font-size:14px;line-height:1.7;border:1px solid var(--cream-3);border-top:none;border-radius:0 0 var(--radius) var(--radius);}
+.ctx-who{border-left:3px solid var(--gold);}
+.ctx-why{border-left:3px solid var(--jade);}
+.ctx-what{border-left:3px solid #5b7fa6;}
+.ctx-when{border-left:3px solid var(--rose);}
+.ctx-how{border-left:3px solid #6b5fa6;}
 
-/* ── SCENARIO ── */
-.scenario-box {
-  background: var(--cream);
-  border-left: 3px solid var(--gold);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.5rem;
-  font-size: 14px;
-  color: var(--text);
-  line-height: 1.7;
-}
-.scenario-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold-dim);
-  margin-bottom: 6px;
-}
+/* PARTS NAV */
+.parts-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.25rem;}
+.part-btn{padding:6px 16px;border-radius:20px;border:1.5px solid var(--cream-3);background:var(--white);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-muted);transition:all 0.15s;}
+.part-btn:hover{border-color:var(--slate-light);color:var(--text);}
+.part-btn.active{background:var(--navy);border-color:var(--navy);color:var(--gold);font-weight:500;}
+.part-btn.done{border-color:var(--jade);color:var(--jade);background:rgba(45,106,79,0.06);}
+.part-q-text{font-size:15px;font-weight:500;color:var(--text);margin-bottom:1rem;line-height:1.6;}
 
-/* ── CONTEXT TABS ── */
-.context-section { margin-bottom: 1.5rem; }
-.context-tabs {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 0;
-  border-bottom: 1px solid var(--cream-3);
-  padding-bottom: 0;
-}
-.ctx-tab {
-  padding: 7px 16px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  color: var(--text-dim);
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  transition: all 0.15s;
-  font-weight: 400;
-}
-.ctx-tab:hover { color: var(--text-muted); }
-.ctx-tab.active {
-  color: var(--navy);
-  border-bottom-color: var(--gold);
-  font-weight: 500;
-}
-.ctx-content {
-  background: var(--cream);
-  border-radius: 0 var(--radius) var(--radius) var(--radius);
-  padding: 1rem 1.25rem;
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--text);
-  border: 1px solid var(--cream-3);
-  border-top: none;
-  border-radius: 0 0 var(--radius) var(--radius);
-}
-.ctx-who { border-left: 3px solid var(--gold); }
-.ctx-why { border-left: 3px solid var(--jade); }
-.ctx-what { border-left: 3px solid #5b7fa6; }
-.ctx-when { border-left: 3px solid var(--rose); }
-.ctx-how { border-left: 3px solid #6b5fa6; }
+/* FORMULA BOX with hoverable variables */
+.formula-box{background:var(--navy);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.formula-lbl{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:8px;}
+.formula-expr{font-family:'DM Mono',monospace;font-size:15px;color:var(--gold-light);line-height:1.8;white-space:pre-wrap;}
+.var-def-section{margin-bottom:1rem;}
+.var-def-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px;margin-top:0.75rem;}
+.var-grid{display:flex;flex-wrap:wrap;gap:6px;}
 
-/* ── PARTS NAV ── */
-.parts-nav {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 1.25rem;
-}
-.part-btn {
-  padding: 6px 16px;
-  border-radius: 20px;
-  border: 1.5px solid var(--cream-3);
-  background: var(--white);
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  color: var(--text-muted);
-  transition: all 0.15s;
-}
-.part-btn:hover { border-color: var(--slate-light); color: var(--text); }
-.part-btn.active {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: var(--gold);
-  font-weight: 500;
-}
-.part-btn.done { border-color: var(--jade); color: var(--jade); background: rgba(45,106,79,0.06); }
+/* HOVER VARIABLE TOKENS */
+.vtoken{display:inline-block;position:relative;cursor:help;}
+.vtoken-inner{font-family:'DM Mono',monospace;font-size:14px;color:var(--gold-light);background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.35);border-radius:5px;padding:1px 6px;transition:all 0.15s;}
+.vtoken:hover .vtoken-inner{background:rgba(201,168,76,0.30);border-color:var(--gold);}
+.vtoken-popup{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--cream-3);border-radius:var(--radius);padding:10px 14px;min-width:220px;max-width:300px;box-shadow:var(--shadow-lg);z-index:200;pointer-events:none;opacity:0;transition:opacity 0.15s;}
+.vtoken:hover .vtoken-popup{opacity:1;}
+.vtoken-popup::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--cream-3);}
+.vtoken-popup-symbol{font-family:'DM Mono',monospace;font-size:16px;color:var(--navy);font-weight:500;margin-bottom:4px;}
+.vtoken-popup-name{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px;}
+.vtoken-popup-def{font-size:12px;color:var(--text-muted);line-height:1.5;}
+.vtoken-popup-example{font-size:11px;color:var(--jade);margin-top:5px;font-style:italic;}
 
-/* ── FORMULA BOX ── */
-.formula-box {
-  background: var(--navy);
-  border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  margin-bottom: 1rem;
-}
-.formula-lbl {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold-dim);
-  margin-bottom: 6px;
-}
-.formula-expr {
-  font-family: 'DM Mono', monospace;
-  font-size: 15px;
-  color: var(--gold-light);
-  line-height: 1.5;
-  white-space: pre-wrap;
-}
+/* inline var pill in formula text area */
+.formula-vars{margin-top:10px;display:flex;flex-direction:column;gap:4px;}
+.fvar-row{display:flex;align-items:baseline;gap:8px;}
+.fvar-sym{font-family:'DM Mono',monospace;font-size:13px;color:var(--gold);min-width:48px;}
+.fvar-eq{color:var(--gold-dim);font-size:12px;}
+.fvar-name{font-size:13px;color:var(--slate-light);font-weight:500;}
+.fvar-def{font-size:12px;color:var(--text-dim);margin-left:4px;}
 
-/* ── CALC STEPS ── */
-.calc-area {
-  background: var(--cream);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid var(--cream-3);
-}
-.calc-step-row {
-  display: grid;
-  grid-template-columns: 180px 1fr auto;
-  gap: 10px;
-  align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--cream-3);
-  animation: fadeUp 0.25s ease;
-}
-.calc-step-row:last-child { border-bottom: none; }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.step-lbl {
-  font-size: 12px;
-  color: var(--text-dim);
-  font-weight: 500;
-}
-.step-math {
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
-  color: var(--slate);
-}
-.step-result {
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
-  color: var(--navy);
-  font-weight: 500;
-  text-align: right;
-  white-space: nowrap;
-}
+/* CALC STEPS */
+.calc-area{background:var(--cream);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;border:1px solid var(--cream-3);}
+.calc-step-row{display:grid;grid-template-columns:190px 1fr auto;gap:10px;align-items:start;padding:8px 0;border-bottom:1px solid var(--cream-3);animation:fadeUp 0.25s ease;}
+.calc-step-row:last-child{border-bottom:none;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.step-lbl{font-size:12px;color:var(--text-dim);font-weight:500;padding-top:2px;}
+.step-math{font-family:'DM Mono',monospace;font-size:13px;color:var(--slate);}
+.step-result{font-family:'DM Mono',monospace;font-size:13px;color:var(--navy);font-weight:500;text-align:right;white-space:nowrap;}
 
-/* ── ANSWER BOX ── */
-.answer-box {
-  background: linear-gradient(135deg, rgba(45,106,79,0.08) 0%, rgba(45,106,79,0.04) 100%);
-  border: 1.5px solid rgba(45,106,79,0.3);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  animation: fadeUp 0.25s ease;
-}
-.answer-lbl {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--jade);
-  margin-bottom: 6px;
-}
-.answer-val {
-  font-family: 'DM Mono', monospace;
-  font-size: 17px;
-  color: var(--jade);
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-.answer-interp {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
+/* ANSWER */
+.answer-box{background:linear-gradient(135deg,rgba(45,106,79,0.08),rgba(45,106,79,0.04));border:1.5px solid rgba(45,106,79,0.3);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;animation:fadeUp 0.25s ease;}
+.answer-lbl{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--jade);margin-bottom:6px;}
+.answer-val{font-family:'DM Mono',monospace;font-size:16px;color:var(--jade);font-weight:500;margin-bottom:8px;line-height:1.4;}
+.answer-interp{font-size:13px;color:var(--text-muted);line-height:1.6;}
 
-/* ── BUTTONS ── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 20px;
-  border-radius: var(--radius);
-  border: 1.5px solid;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  transition: all 0.15s;
-}
-.btn-ghost {
-  background: transparent;
-  border-color: var(--cream-3);
-  color: var(--text-muted);
-}
-.btn-ghost:hover { border-color: var(--slate-light); color: var(--text); background: var(--cream); }
-.btn-primary {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: var(--gold);
-}
-.btn-primary:hover { background: var(--navy-2); }
-.btn-jade {
-  background: var(--jade);
-  border-color: var(--jade);
-  color: white;
-}
-.btn-jade:hover { background: #245c43; }
-.btn-ask {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--navy);
-}
-.btn-ask:hover { background: var(--gold-light); }
-.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 0.75rem; }
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:var(--radius);border:1.5px solid;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;transition:all 0.15s;}
+.btn-ghost{background:transparent;border-color:var(--cream-3);color:var(--text-muted);}
+.btn-ghost:hover{border-color:var(--slate-light);color:var(--text);background:var(--cream);}
+.btn-primary{background:var(--navy);border-color:var(--navy);color:var(--gold);}
+.btn-primary:hover{background:var(--navy-2);}
+.btn-jade{background:var(--jade);border-color:var(--jade);color:white;}
+.btn-jade:hover{background:#245c43;}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:0.75rem;}
+.reveal-hint{font-size:13px;color:var(--text-dim);font-style:italic;padding:8px 0;}
 
-/* ── CONGRATS ── */
-.congrats-box {
-  background: var(--navy);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  text-align: center;
-  margin-top: 1rem;
-  animation: fadeUp 0.3s ease;
-}
-.congrats-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 22px;
-  color: var(--gold);
-  margin-bottom: 6px;
-}
-.congrats-sub {
-  font-size: 13px;
-  color: var(--slate-light);
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
+/* CONGRATS */
+.congrats-box{background:var(--navy);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;margin-top:1rem;animation:fadeUp 0.3s ease;}
+.congrats-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--gold);margin-bottom:6px;}
+.congrats-sub{font-size:13px;color:var(--slate-light);margin-bottom:1rem;line-height:1.6;}
 
-/* ── PART QUESTION ── */
-.part-q-text {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
+/* KEY INSIGHT BOX */
+.insight-box{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.25rem;}
+.insight-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:5px;}
+.insight-text{font-size:13px;color:var(--text);line-height:1.65;}
 
-/* ── STATS ROW ── */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 1.5rem;
-}
-.stat-card {
-  background: var(--white);
-  border: 1px solid var(--cream-3);
-  border-radius: var(--radius);
-  padding: 0.75rem 1rem;
-  text-align: center;
-}
-.stat-val {
-  font-family: 'DM Mono', monospace;
-  font-size: 22px;
-  font-weight: 500;
-  color: var(--navy);
-}
-.stat-lbl { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+/* FOOTER */
+.site-footer{background:var(--navy);color:var(--slate-light);text-align:center;padding:1.5rem;font-size:12px;margin-top:3rem;border-top:2px solid var(--gold-dim);}
 
-/* ── REVEAL HINT ── */
-.reveal-hint {
-  font-size: 13px;
-  color: var(--text-dim);
-  font-style: italic;
-  padding: 8px 0;
-}
-
-/* ── FOOTER ── */
-.site-footer {
-  background: var(--navy);
-  color: var(--slate-light);
-  text-align: center;
-  padding: 1.5rem;
-  font-size: 12px;
-  margin-top: 3rem;
-  border-top: 2px solid var(--gold-dim);
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .layout { grid-template-columns: 1fr; }
-  .sidebar { position: static; }
-  .stats-row { grid-template-columns: repeat(2,1fr); }
-  .calc-step-row { grid-template-columns: 1fr; }
-  .step-result { text-align: left; }
+@media(max-width:768px){
+  .layout{grid-template-columns:1fr;}
+  .sidebar{position:static;}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .calc-step-row{grid-template-columns:1fr;}
+  .step-result{text-align:left;}
+  .deep-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -551,14 +182,11 @@ body {
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="logo">
+    <div>
       <span class="logo-main">MicroReady MBA</span>
       <span class="logo-sub">Diamond Economics Tutor</span>
     </div>
-    <div class="header-progress">
-      <span>Progress:</span>
-      <span class="progress-pill" id="progress-pill">0 / 15 parts</span>
-    </div>
+    <span class="progress-pill" id="progress-pill">0 / 33 parts</span>
   </div>
 </header>
 
@@ -568,23 +196,19 @@ body {
       <div class="sidebar-label">Chapters</div>
       <button class="ch-btn active" data-ch="1" onclick="switchChapter(1)">
         <span class="ch-dot" style="background:#378ADD"></span>
-        <span class="ch-num">Ch 1</span>
-        Elasticity
+        <span class="ch-num">Ch 1</span>Elasticity
       </button>
       <button class="ch-btn" data-ch="2" onclick="switchChapter(2)">
         <span class="ch-dot" style="background:#2d6a4f"></span>
-        <span class="ch-num">Ch 2</span>
-        Externalities
+        <span class="ch-num">Ch 2</span>Externalities
       </button>
       <button class="ch-btn" data-ch="3" onclick="switchChapter(3)">
         <span class="ch-dot" style="background:#c9a84c"></span>
-        <span class="ch-num">Ch 3</span>
-        Public Goods
+        <span class="ch-num">Ch 3</span>Public Goods
       </button>
       <button class="ch-btn" data-ch="4" onclick="switchChapter(4)">
         <span class="ch-dot" style="background:#8b2635"></span>
-        <span class="ch-num">Ch 4</span>
-        Info Asymmetry
+        <span class="ch-num">Ch 4</span>Info Asymmetry
       </button>
     </div>
     <div class="sidebar-section">
@@ -592,7 +216,7 @@ body {
       <ul class="q-list" id="q-list"></ul>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-label">Chapter Overview</div>
+      <div class="sidebar-label">Chapter overview</div>
       <div id="ch-summary" style="font-size:12px;color:var(--text-muted);line-height:1.6;padding:4px 2px;"></div>
     </div>
   </aside>
@@ -608,715 +232,824 @@ body {
 </footer>
 
 <script>
+// ─── VARIABLE DEFINITIONS LIBRARY ───────────────────────────────────────────
+const VARS = {
+  Ed:   { sym:"E_d",   name:"Own-Price Elasticity",         def:"How much quantity demanded changes when this product's own price changes. Always negative (price up → quantity down).", ex:"E_d = −1.22 means a 1% price rise causes a 1.22% drop in sales." },
+  Exy:  { sym:"E_xy",  name:"Cross-Price Elasticity",        def:"How much demand for good X changes when the price of good Y changes. Sign reveals the relationship.", ex:"E_xy = +1.22: natural diamonds cheaper → lab-grown sales drop 1.22%." },
+  EI:   { sym:"E_I",   name:"Income Elasticity",             def:"How much quantity demanded changes when consumer income changes. Shows whether a good is a luxury or necessity.", ex:"E_I = 2.0: income rises 10% → diamond purchases rise 20%." },
+  pctQ: { sym:"%ΔQ",   name:"Percent Change in Quantity",    def:"The change in quantity sold, expressed as a percentage of the average quantity. Using the average (midpoint method) gives a symmetric result.", ex:"Sales go from 500 to 600: %ΔQ = 100/550 = 18.18%." },
+  pctP: { sym:"%ΔP",   name:"Percent Change in Price",       def:"The change in price, expressed as a percentage of the average price. We use the midpoint average so the answer is the same regardless of direction.", ex:"Price drops from $1,200 to $1,000: %ΔP = −200/1,100 = −18.18%." },
+  pctI: { sym:"%ΔI",   name:"Percent Change in Income",      def:"The change in average consumer income, expressed as a percentage of the average income across both periods.", ex:"Income rises from $90k to $99k: %ΔI = 9,000/94,500 = 9.52%." },
+  Q1Q2: { sym:"Q₁, Q₂",name:"Initial and New Quantity",      def:"Q₁ is the original quantity demanded before the price change. Q₂ is the new quantity demanded after the change. Always identify which is which before calculating.", ex:"January: Q₁ = 500 rings. February: Q₂ = 600 rings." },
+  P1P2: { sym:"P₁, P₂",name:"Initial and New Price",         def:"P₁ is the original price. P₂ is the new price. The midpoint method uses their average (P₁+P₂)/2 as the denominator.", ex:"January: P₁ = $1,200. February: P₂ = $1,000." },
+  TR:   { sym:"TR",    name:"Total Revenue",                  def:"The total money a firm earns from selling its product. Calculated as Price × Quantity. Elasticity tells you whether a price change grows or shrinks TR.", ex:"TR = $1,000 × 600 = $600,000." },
+  Px:   { sym:"P_x",   name:"Price of Good X",               def:"The price of the product whose demand we're measuring (e.g., lab-grown diamonds).", ex:"P_x = $2,500 per lab-grown carat." },
+  Qx:   { sym:"Q_x",   name:"Quantity of Good X Demanded",   def:"The quantity of product X that consumers want to buy. This is what changes in response to other goods' price changes.", ex:"Q_x = 80 lab-grown rings per month." },
+  Py:   { sym:"P_y",   name:"Price of Good Y",               def:"The price of the other related product (e.g., natural diamonds). A change in P_y is what we're measuring the effect of.", ex:"P_y drops from $6,000 to $5,000 per natural carat." },
+  SC:   { sym:"SC",    name:"Social Cost",                    def:"The full cost of production to society — including costs the firm pays AND costs imposed on others (externalities). SC = private cost + external cost.", ex:"Coal energy costs the firm $20/carat privately, but causes $11.25 in climate damage — SC = $31.25." },
+  MPC:  { sym:"MPC",   name:"Marginal Private Cost",          def:"The additional cost to the firm of producing one more unit. This is what firms minimize when making production decisions — it does NOT include externalities.", ex:"MPC = 40 + 0.002Q means each extra carat costs $40 plus a rising amount as output grows." },
+  MSC:  { sym:"MSC",   name:"Marginal Social Cost",           def:"The true cost to society of producing one more unit: MPC + net external costs. The socially optimal output is where Price = MSC.", ex:"MSC = MPC + $5 net MEC. If MPC = 40 + 0.002Q, then MSC = 45 + 0.002Q." },
+  MEC:  { sym:"MEC",   name:"Marginal External Cost",         def:"The additional cost imposed on third parties (non-participants) by producing one more unit. Pollution, CO₂ emissions, and health impacts are common examples.", ex:"Each carat mined causes $15 in environmental damage → MEC = $15." },
+  netMEC:{ sym:"Net MEC",name:"Net Marginal External Cost",  def:"Negative externalities minus positive externalities. If a mine causes $15 harm but creates $10 in community benefits, net MEC = $5.", ex:"Net MEC = $15 (environmental) − $10 (jobs/taxes) = $5/carat." },
+  t:    { sym:"t*",    name:"Pigouvian Tax",                  def:"The optimal tax per unit of output, set equal to the net marginal external cost at the socially optimal output level. Designed to make firms internalize the damage they cause.", ex:"t* = $5/carat makes the mine produce 37,500 carats instead of 40,000." },
+  Q:    { sym:"Q",     name:"Quantity Produced",              def:"The number of units produced and sold per period. In optimization, we solve for the Q that maximizes profit or social welfare.", ex:"Q = 40,000 carats/year is the profit-maximizing output before the Pigouvian tax." },
+  P:    { sym:"P",     name:"Market Price",                   def:"The price at which diamonds sell in the market. For optimization, we set P equal to MPC (private) or MSC (social) to find the optimal output.", ex:"P = $120/carat for rough diamonds at Karowe mine." },
+  EV:   { sym:"E[V]",  name:"Expected Value",                 def:"A probability-weighted average: what buyers rationally expect a product to be worth when they can't observe quality directly. Equal weights if market shares are known.", ex:"If 40% genuine ($850 value) and 60% greenwashed ($480), E[V] = 0.4×850 + 0.6×480 = $628." },
+  p1:   { sym:"p₁,p₂", name:"Probability Weights (market shares)", def:"The fractions of the market occupied by each quality tier. Must sum to 1. In the lemons model, these are what buyers use to form expectations.", ex:"40% genuine, 60% greenwasher: p₁=0.4, p₂=0.6." },
+  V1:   { sym:"V₁,V₂", name:"Value of each quality tier",    def:"The true value a fully-informed consumer would place on each quality tier. Buyers don't observe these directly — they only see the average.", ex:"V_genuine = $850/carat. V_greenwasher = $480/carat." },
+  N:    { sym:"N",     name:"Number of firms",                def:"The total number of producers in the industry. Affects the free-rider calculation: the more firms, the smaller each one's share of the collective benefit from contributing.", ex:"N = 20 diamond producers, each gaining $180,000 if the standard exists." },
+  B:    { sym:"B",     name:"Individual benefit",             def:"The value each firm receives if the public good (sustainability standard) is provided — regardless of whether they contributed to its cost.", ex:"B = $180,000 per firm in consumer trust benefits from SCS-007." },
+  C:    { sym:"C",     name:"Cost of contribution",           def:"The cost each firm must pay to voluntarily fund the public good. Free-rider logic compares C to B: since B is received whether you pay or not, paying C is individually irrational.", ex:"C = $100,000 (equal share of $2M ÷ 20 firms)." },
+  CH:   { sym:"C_H",   name:"Certification cost for H-type",  def:"The cost a high-quality (genuinely sustainable) firm incurs to get certified. Lower than C_L because high-quality firms need fewer operational changes.", ex:"C_H = $180,000 for SolarDiam (already uses 100% solar)." },
+  CL:   { sym:"C_L",   name:"Certification cost for L-type",  def:"The cost a low-quality (greenwashing) firm would incur to get certified. Higher than C_H because they need major operational overhauls to meet the standard.", ex:"C_L = $520,000 for QuickGem (needs coal→solar switch + traceability systems)." },
+  R:    { sym:"R",     name:"Revenue premium from certification", def:"The additional revenue per year a firm earns because of its certified status — from price premiums and access to sustainability-conscious buyers.", ex:"R = $100/carat × 3,000 carats/year = $300,000/year." },
+};
+
+// Helper: build a hoverable variable token (used in formula rendering)
+function vt(symbol, varKey, displayText) {
+  const v = VARS[varKey];
+  if (!v) return `<span style="font-family:'DM Mono',monospace;color:var(--gold-light)">${displayText||symbol}</span>`;
+  return `<span class="vtoken"><span class="vtoken-inner">${displayText||symbol}</span>
+    <div class="vtoken-popup">
+      <div class="vtoken-popup-symbol">${v.sym}</div>
+      <div class="vtoken-popup-name">${v.name}</div>
+      <div class="vtoken-popup-def">${v.def}</div>
+      <div class="vtoken-popup-example">${v.ex}</div>
+    </div></span>`;
+}
+
+// Build a variable definitions row shown below the formula
+function varDefsHTML(keys) {
+  return `<div class="formula-vars">${keys.map(k => {
+    const v = VARS[k];
+    if (!v) return '';
+    return `<div class="fvar-row">
+      <span class="fvar-sym">${v.sym}</span>
+      <span class="fvar-eq">=</span>
+      <span class="fvar-name">${v.name}</span>
+      <span class="fvar-def">— ${v.def}</span>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+// ─── DEEP EXPLAINER DATA ─────────────────────────────────────────────────────
+const DEEP = {
+  p1: {
+    title: "Own-Price Elasticity", subtitle: "The rubber band test for demand",
+    cards: [
+      { label:"The core idea", text:"Elasticity asks: if I change the price by 1%, how much does quantity change? An <em>elastic</em> good stretches a lot — consumers are sensitive. An <em>inelastic</em> good barely moves — consumers keep buying regardless." },
+      { label:"Why the midpoint?", text:"If you use the starting price as the base, going from $10→$12 gives a different % than $12→$10. The <em>midpoint method</em> uses the average of both prices as the base, so the answer is symmetric and consistent." },
+      { label:"Revenue connection", text:"This is the practical payoff. <em>Elastic demand</em>: cut prices to grow revenue (volume gain beats per-unit loss). <em>Inelastic demand</em>: raise prices to grow revenue (volume barely drops). Getting this wrong costs real money." },
+      { label:"Diamond industry", text:"Lab-grown diamonds are becoming more <em>elastic</em> over time as more substitutes appear. Natural diamonds are still relatively inelastic because of brand loyalty and perceived uniqueness — which is why De Beers invests so heavily in marketing." },
+    ]
+  },
+  p2: {
+    title: "Cross-Price Elasticity", subtitle: "How competitor pricing ripples to your sales",
+    cards: [
+      { label:"Substitutes vs complements", text:"A <em>positive</em> cross-price elasticity means the goods compete. When natural diamonds get cheaper, people switch to them and buy fewer lab-grown. A <em>negative</em> value means the goods are bought together — like rings and ring boxes." },
+      { label:"Magnitude matters too", text:"E_xy = +0.1 is a weak substitute (barely related). E_xy = +1.22 is a strong substitute — De Beers cutting prices by 10% could slash Brilliant Earth's lab-grown sales by ~12.2%. That's a major business risk." },
+      { label:"Strategic use", text:"Companies track cross-price elasticities to anticipate competitor moves. If you know E_xy = +1.22, you can model: 'What if De Beers discounts 15% next quarter?' and prepare inventory, pricing, and marketing responses in advance." },
+      { label:"Diamond industry", text:"The cross-price elasticity between natural and lab-grown diamonds is rising over time as the two products become more <em>interchangeable</em> in consumers' minds — driven partly by FTC's 2018 ruling that both are legally 'diamonds'." },
+    ]
+  },
+  p3: {
+    title: "Income Elasticity", subtitle: "Booms, busts, and the luxury trap",
+    cards: [
+      { label:"Normal vs inferior goods", text:"<em>Normal goods</em>: demand rises when income rises (positive E_I). <em>Inferior goods</em>: demand falls when income rises — like cheap instant noodles that people stop buying once they can afford better food." },
+      { label:"The luxury amplifier", text:"Luxury goods (E_I &gt; 1) are <em>amplified</em> by the business cycle. A 5% recession-driven income drop might cut diamond sales 8–12%. The same recovery boom that lifts incomes 5% could grow diamond sales 8–12%. More volatile than the economy itself." },
+      { label:"Planning implication", text:"Knowing E_I lets retailers plan inventory conservatively before recessions and aggressively during expansions. It also informs credit and financing decisions — should you lock in low-cost inventory now or wait?" },
+      { label:"Diamond industry", text:"Real-world E_I estimates for diamond jewelry range from <em>1.0 to 2.5</em>, confirming luxury status. This is why lab-grown diamonds (cheaper, more accessible) may actually have a lower income elasticity than natural diamonds — they're reaching slightly less affluent buyers who don't react as dramatically to income swings." },
+    ]
+  },
+  p4: {
+    title: "Negative Externalities & Pigouvian Taxes", subtitle: "When private costs hide social damage",
+    cards: [
+      { label:"The core problem", text:"When a firm's private costs don't reflect the full damage it causes, it produces <em>too much</em> of the harmful good. GreenGem burning coal pays $20/carat, but imposes $11.25 of climate damage on others. The market sees a $20 cost when the true cost is $31.25." },
+      { label:"Pigou's elegant fix", text:"Arthur Pigou (1920) realized: just make the firm pay for the damage through a <em>tax equal to the marginal external cost</em>. Now the firm's private cost = social cost, and it naturally produces the socially optimal amount — no regulator needs to know the firm's technology." },
+      { label:"Why not just regulate output?", text:"Direct quantity regulation requires regulators to know each firm's cost structure — practically impossible. A Pigouvian tax is information-efficient: the firm itself decides how much to cut based on its own costs. Firms that can cut cheaply cut more; firms that can't, pay the tax." },
+      { label:"SCS-007 connection", text:"The SCS-007 certification is a <em>voluntary Pigouvian internalization</em>. Instead of a government tax, the firm imposes a 'tax' on itself (higher costs for clean energy, traceability, community investment). The market premium from certification is the reward for internalizing — a private-sector Pigouvian solution." },
+    ]
+  },
+  p5: {
+    title: "Net Externalities & Social Cost Functions", subtitle: "When mines create both harm and benefit",
+    cards: [
+      { label:"Not all externalities are negative", text:"Diamond mines in Botswana fund ~30% of the country's GDP through taxes and employment. These are real <em>positive externalities</em>: benefits to third parties who don't pay for them. Sound policy must account for both sides of the ledger." },
+      { label:"The MSC function", text:"Marginal Social Cost = MPC + net MEC. By graphing MSC alongside the demand curve (price), we find the socially optimal output at their intersection. The gap between private output (P=MPC) and social output (P=MSC) shows the overproduction due to unpriced externalities." },
+      { label:"The Pigouvian tax in practice", text:"The optimal tax equals net MEC at the socially optimal output, not at the private output. This is a subtle but important distinction: you're not taxing current behavior, you're pricing the harm at the level you want the firm to operate at." },
+      { label:"Botswana's real dilemma", text:"Botswana's government faces this tradeoff daily. Diamond mining funds schools and hospitals (positive externalities) but damages ecosystems (negative). The correct policy isn't 'no intervention' (ignores net harm) or 'shut it down' (ignores enormous benefits). It's a <em>net MEC-calibrated tax</em> that balances both." },
+    ]
+  },
+  p6: {
+    title: "Public Goods & the Free-Rider Problem", subtitle: "Why good things don't always get built",
+    cards: [
+      { label:"The two properties", text:"A <em>pure public good</em> is (1) non-rivalrous: my using it doesn't reduce what's available for you, and (2) non-excludable: you can't stop people from benefiting even if they didn't pay. The SCS-007 criteria are non-rivalrous (any firm can read them) but the certification mark is excludable (only paying, compliant firms can use it)." },
+      { label:"Why markets underprovide", text:"Since you can benefit whether or not you pay, the rational strategy is <em>always</em> to free-ride. When everyone reasons this way, no one contributes and the public good isn't provided — even when total benefits far exceed total costs. This is the fundamental market failure in public goods." },
+      { label:"Olson's collective action logic", text:"Mancur Olson (1965) showed the paradox of groups: large groups have more total benefit from collective action but are <em>harder</em> to organize because each member's individual contribution feels negligible. Small groups coordinate more easily. Industry associations exist partly to overcome this." },
+      { label:"Ostrom's solution", text:"Elinor Ostrom's Nobel-winning insight: communities CAN solve free-rider problems with the right institutional design — monitoring, graduated sanctions, clear rules, credible commitment. SCS-007's audit system, annual surveillance, and fee structure are exactly these mechanisms applied to diamond sustainability." },
+    ]
+  },
+  p7: {
+    title: "Threshold Public Goods & Coordination Games", subtitle: "Tipping points and the cost of waiting",
+    cards: [
+      { label:"Threshold effects", text:"In a threshold public goods game, the collective benefit only materializes if enough players contribute. Below the threshold: small benefit. Above: large benefit. This creates a <em>tipping point</em> — one more certifying firm can unlock benefits for the entire industry." },
+      { label:"Multiple Nash equilibria", text:"Coordination games often have two Nash equilibria: one where everyone coordinates on the good outcome (everyone certifies) and one where everyone coordinates on the bad outcome (no one certifies). Both are stable — the question is which one you're stuck in." },
+      { label:"How to tip equilibria", text:"Focal points, first movers, and industry leaders can tip equilibria from the bad to the good. When WD Lab Grown certified first, they created a new focal point. Other firms could then certify as the '2nd', '3rd', etc. — each successive certification making the threshold easier to reach." },
+      { label:"Strategic delay vs. first-mover advantage", text:"Waiting to certify has hidden costs: competitor gets the media story, retailer relationship, and brand association. But certifying before the threshold is reached has hidden costs too: you pay $150k and only get the $25k sub-threshold benefit. The timing game is genuinely complex." },
+    ]
+  },
+  p8: {
+    title: "Akerlof's Market for Lemons", subtitle: "How bad products drive out good ones",
+    cards: [
+      { label:"The revolutionary insight", text:"Before Akerlof (1970), economists assumed markets work well if competition is free. Akerlof showed that <em>information asymmetry alone</em> — not monopoly, not externalities — can destroy entire markets. The 'lemons' paper is one of the most cited in economics history." },
+      { label:"Why averages are dangerous", text:"When buyers can't distinguish quality, they rationally offer the <em>average</em> value. But this average underpays high-quality sellers (who know they're worth more) and overpays low-quality sellers (who know they're worth less). Over time, only the low-quality sellers find it worth selling." },
+      { label:"The sustainability credibility crisis", text:"Without third-party verification, every producer has an incentive to claim sustainability — it's cheap marketing. The producers who invest in actual sustainability face higher costs but get paid the same average price as greenwashers. Eventually they either exit or stop investing." },
+      { label:"Why SCS-007 is the fix", text:"SCS-007 third-party certification converts an unobservable quality into an <em>observable signal</em>. Buyers can now distinguish certified (high-quality) from uncertified (unknown). This stops adverse selection: high-quality firms get a fair price, greenwashers can't claim the premium, and the market for genuinely sustainable diamonds can function." },
+    ]
+  },
+  p9: {
+    title: "Multi-Tier Adverse Selection & Separating Equilibria", subtitle: "When markets unravel in stages",
+    cards: [
+      { label:"From two tiers to many", text:"Akerlof's original model had just good cars and lemons. Real markets have <em>many quality tiers</em>. The unraveling is sequential: the highest tier exits first (most undercompensated), then the next, then the next, until only the lowest tier remains." },
+      { label:"Pooling vs separating equilibria", text:"A <em>pooling equilibrium</em> is where all types receive the same price because buyers can't distinguish them — and it's unstable, prone to unraveling. A <em>separating equilibrium</em> is where each type is correctly priced based on observable signals. Certification creates separation." },
+      { label:"The value destroyed", text:"Every tier that exits represents destroyed value: consumers who wanted premium sustainable diamonds can't find them; producers who could have served them can't signal their quality. The gap between pooling and separating equilibrium is measurable — it's the economic cost of information asymmetry." },
+      { label:"Why rigor matters", text:"A weak certification standard that's easy to game pools high and medium quality together — better than no standard, but still invites gaming. SCS-007's five-pillar audit is deliberately <em>rigorous</em> precisely because the value of the signal comes from its difficulty. Making it easier would reduce its information content." },
+    ]
+  },
+};
+
+// ─── DATA ────────────────────────────────────────────────────────────────────
 const CHAPTERS = [
-  {
-    id: 1,
-    name: "The Language of Demand",
-    subtitle: "Elasticities",
-    color: "#378ADD",
-    summary: "How sensitive are buyers to price changes? This chapter gives you the math to measure it — three types of elasticity that every pricing decision depends on.",
-  },
-  {
-    id: 2,
-    name: "When Markets Get Prices Wrong",
-    subtitle: "Externalities & Pigou",
-    color: "#2d6a4f",
-    summary: "What happens when a firm's private costs don't capture the full damage it causes? Markets overproduce — and Pigouvian taxes are the fix. SCS-007 is this logic in action.",
-  },
-  {
-    id: 3,
-    name: "The Collective Action Problem",
-    subtitle: "Public Goods & Free-Riding",
-    color: "#c9a84c",
-    summary: "Why don't sustainability standards emerge on their own? Because every firm wants to free-ride. This chapter shows the math of why — and how institutions like SCS-007 solve it.",
-  },
-  {
-    id: 4,
-    name: "The Market for Lemons",
-    subtitle: "Information Asymmetry",
-    color: "#8b2635",
-    summary: "When sellers know more than buyers about product quality, markets unravel. Akerlof's 1970 Nobel-winning insight explains why greenwashing kills the market for genuine sustainable diamonds.",
-  },
+  { id:1, name:"The Language of Demand", subtitle:"Elasticities", color:"#378ADD", summary:"How sensitive are buyers to price changes? Three types of elasticity tell you — and each one drives a different pricing and strategy decision." },
+  { id:2, name:"When Markets Get Prices Wrong", subtitle:"Externalities & Pigou", color:"#2d6a4f", summary:"Diamond mines create costs (and benefits) for people who never agreed to them. Pigou's 1920 insight — make firms pay for the damage they cause — is the foundation of environmental policy and SCS-007." },
+  { id:3, name:"The Collective Action Problem", subtitle:"Public Goods & Free-Riding", color:"#c9a84c", summary:"Why don't sustainability standards emerge on their own? Because every firm wants to free-ride. Nash equilibrium predicts zero cooperation — and smart institutional design (like SCS-007's fee structure) is how we escape it." },
+  { id:4, name:"The Market for Lemons", subtitle:"Information Asymmetry & Adverse Selection", color:"#8b2635", summary:"When buyers can't tell good diamonds from greenwashed ones, bad drives out good. Akerlof's 1970 Nobel insight explains why 'sustainable diamond' as a category can collapse — and why third-party certification is the cure." },
 ];
 
 const QUESTIONS = [
-  // ── CHAPTER 1 ──────────────────────────────────────────────────────────
-  {
-    ch: 1, id: "p1", num: "Problem 1", diff: "beginner",
-    topic: "Own-Price Elasticity",
-    title: "Signet Jewelers cuts price on lab-grown rings",
-    scenario: "Signet Jewelers sells lab-grown diamond solitaire engagement rings. In January 2025 the average price was <strong>$1,200</strong> and Signet sold <strong>500 rings/month</strong>. After dropping the price to <strong>$1,000</strong> in February, monthly sales jumped to <strong>600 rings</strong>.",
-    context: {
-      what: "Own-price elasticity of demand — it measures how sensitive buyers are to a change in THIS product's own price. Think of it like a rubber band: some goods stretch a lot when price moves (elastic), others barely budge (inelastic).",
-      why: "Signet needs to answer: if we drop prices, will we sell ENOUGH extra rings to make up for the revenue we lose per ring? Elasticity is the tool that answers that question precisely — instead of just guessing.",
-      who: "Alfred Marshall at Cambridge formalized this in his 1890 <em>Principles of Economics</em>. Antoine Cournot (1838) laid the groundwork. Baye & Prince teach it in Chapter 3.",
-      when: "Any time a company is deciding whether to raise or lower prices. Elastic demand → cut prices to grow revenue. Inelastic demand → raise prices to grow revenue. Getting this wrong is expensive.",
-      how: "Step 1: Calculate % change in quantity using the midpoint formula. Step 2: Calculate % change in price using midpoint formula. Step 3: Divide. Step 4: Compare the absolute value to 1."
+  // ── CH 1 ──────────────────────────────────────────────────────────────
+  { ch:1, id:"p1", num:"Problem 1", diff:"beginner", topic:"Own-Price Elasticity", title:"Signet Jewelers cuts price on lab-grown rings",
+    scenario:"Signet Jewelers sells lab-grown diamond solitaire rings. In January 2025: price = <strong>$1,200</strong>, sales = <strong>500 rings/month</strong>. After dropping to <strong>$1,000</strong> in February, sales jumped to <strong>600 rings/month</strong>.",
+    context:{
+      what:"Own-price elasticity of demand (E_d) measures how sensitive buyers are to THIS product's own price change. Think of it like a rubber band: some goods stretch a lot when price moves (elastic — consumers are sensitive), others barely budge (inelastic — consumers keep buying regardless of price).",
+      why:"Signet needs to answer: if we drop prices, will we sell ENOUGH extra rings to make up for the revenue we lose per ring? Elasticity gives an exact, quantitative answer instead of guessing. Get it wrong and a 'strategic price cut' actually destroys revenue.",
+      who:"Alfred Marshall (Cambridge, 1890 — <em>Principles of Economics</em>) formalized elasticity. Antoine Cournot (1838) laid the mathematical groundwork. Baye & Prince cover it in Chapter 3, and it's the single most-used concept in retail pricing.",
+      when:"Any time a firm is deciding whether to raise or lower prices. Elastic demand → cut prices to grow revenue (volume gain beats per-unit loss). Inelastic demand → raise prices to grow revenue (volume barely drops). This also predicts how consumers respond to competitor pricing.",
+      how:"Step 1: Find Q₁, Q₂, P₁, P₂. Step 2: Calculate %ΔQ using the midpoint formula. Step 3: Calculate %ΔP using the midpoint formula. Step 4: Divide %ΔQ ÷ %ΔP. Step 5: Take the absolute value and classify (>1 elastic, <1 inelastic, =1 unit elastic)."
     },
-    parts: [
-      {
-        label: "Part a",
-        q: "Calculate the own-price elasticity of demand using the arc (midpoint) formula.",
-        formula: { label: "Arc (Midpoint) Formula — use this, not the endpoint formula", expr: "E_d  =  [(Q₂−Q₁) / ((Q₂+Q₁)/2)]  ÷  [(P₂−P₁) / ((P₂+P₁)/2)]" },
-        steps: [
-          { lbl: "Average Q", math: "(600 + 500) / 2", res: "= 550" },
-          { lbl: "% change in Q", math: "(600 − 500) / 550", res: "= 0.1818  →  18.18%" },
-          { lbl: "Average P", math: "(1,000 + 1,200) / 2", res: "= 1,100" },
-          { lbl: "% change in P", math: "(1,000 − 1,200) / 1,100", res: "= −0.1818  →  −18.18%" },
-          { lbl: "Elasticity E_d", math: "18.18% ÷ (−18.18%)", res: "= −1.0" },
+    parts:[
+      { label:"Part a", q:"Calculate the own-price elasticity using the arc (midpoint) formula.",
+        formula:{ label:"Arc (Midpoint) Formula — always use this, not (Q2−Q1)/Q1",
+          html:`${vt('E_d','Ed')} = [(<span class="vtoken"><span class="vtoken-inner">Q₂−Q₁</span>${popupHTML('Q1Q2')}</span>) / avg(<span class="vtoken"><span class="vtoken-inner">Q</span>${popupHTML('Q1Q2')}</span>)] ÷ [(<span class="vtoken"><span class="vtoken-inner">P₂−P₁</span>${popupHTML('P1P2')}</span>) / avg(<span class="vtoken"><span class="vtoken-inner">P</span>${popupHTML('P1P2')}</span>)]` },
+        varKeys:['Ed','Q1Q2','P1P2','pctQ','pctP'],
+        steps:[
+          {lbl:"Average Q (denominator)",math:"(600 + 500) / 2",res:"= 550"},
+          {lbl:"% change in Q (%ΔQ)",math:"(600 − 500) / 550",res:"= 0.1818 → +18.18%"},
+          {lbl:"Average P (denominator)",math:"($1,000 + $1,200) / 2",res:"= $1,100"},
+          {lbl:"% change in P (%ΔP)",math:"($1,000 − $1,200) / $1,100",res:"= −0.1818 → −18.18%"},
+          {lbl:"Elasticity E_d",math:"+18.18% ÷ (−18.18%)",res:"= −1.0"},
         ],
-        answer: "E_d = −1.0",
-        interp: "The midpoint formula gives the same answer in both directions — that's why we use it. Here, quantity rose 18.18% and price fell 18.18%: perfectly balanced."
+        answer:"E_d = −1.0  (unit elastic)",
+        interp:"The midpoint method guarantees the same answer regardless of direction. Here, quantity rose exactly as much (%) as price fell — a perfectly balanced seesaw."
       },
-      {
-        label: "Part b",
-        q: "Is demand elastic, inelastic, or unit elastic? Explain what this means.",
-        formula: { label: "Classification rule", expr: "|E_d| > 1  →  elastic\n|E_d| < 1  →  inelastic\n|E_d| = 1  →  unit elastic" },
-        steps: [
-          { lbl: "Our |E_d|", math: "|−1.0|", res: "= 1.0" },
-          { lbl: "Compare to 1", math: "1.0  =  1", res: "→  exactly unit elastic" },
+      { label:"Part b", q:"Is demand elastic, inelastic, or unit elastic? What does this mean in plain terms?",
+        formula:{ label:"Classification rule — use the absolute value",
+          html:`|${vt('E_d','Ed')}| > 1 → <strong style="color:var(--gold-light)">elastic</strong> &nbsp;|&nbsp; |${vt('E_d','Ed')}| < 1 → <strong style="color:var(--gold-light)">inelastic</strong> &nbsp;|&nbsp; |${vt('E_d','Ed')}| = 1 → <strong style="color:var(--gold-light)">unit elastic</strong>` },
+        varKeys:['Ed'],
+        steps:[
+          {lbl:"Our |E_d|",math:"|−1.0| = 1.0",res:"exactly 1"},
+          {lbl:"Classification",math:"1.0 = 1",res:"→ UNIT ELASTIC"},
+          {lbl:"In plain terms",math:"Price fell 18.18%, sales rose 18.18%",res:"→ perfectly balanced"},
         ],
-        answer: "Unit elastic  (|E_d| = 1.0)",
-        interp: "The percentage drop in price was exactly matched by the percentage rise in quantity sold. It's a perfect seesaw — perfectly balanced."
+        answer:"Unit elastic — |E_d| = 1.0",
+        interp:"The price cut and volume gain exactly cancel out. This is the knife's edge: neither elastic (where price cuts grow revenue) nor inelastic (where they shrink it)."
       },
-      {
-        label: "Part c",
-        q: "Did Signet's total revenue increase or decrease from the price cut? Show the calculation.",
-        formula: { label: "Total Revenue", expr: "TR  =  Price  ×  Quantity" },
-        steps: [
-          { lbl: "January TR", math: "$1,200 × 500 rings", res: "= $600,000" },
-          { lbl: "February TR", math: "$1,000 × 600 rings", res: "= $600,000" },
-          { lbl: "Change in TR", math: "$600,000 − $600,000", res: "= $0  (no change)" },
+      { label:"Part c", q:"Did total revenue increase or decrease from the price cut? Show the math.",
+        formula:{ label:"Total Revenue — the simplest test of elasticity",
+          html:`${vt('TR','TR')} = Price × Quantity` },
+        varKeys:['TR','Ed'],
+        steps:[
+          {lbl:"January TR",math:"$1,200 × 500",res:"= $600,000"},
+          {lbl:"February TR",math:"$1,000 × 600",res:"= $600,000"},
+          {lbl:"Change",math:"$600,000 − $600,000",res:"= $0 — no change"},
         ],
-        answer: "Revenue stayed exactly the same: $600,000 both months",
-        interp: "This is the hallmark of unit elastic demand — price cuts don't move revenue. The volume gain precisely offsets the per-unit revenue loss. This is the Total Revenue Test in action."
-      }
-    ]
-  },
-  {
-    ch: 1, id: "p2", num: "Problem 2", diff: "beginner",
-    topic: "Cross-Price Elasticity",
-    title: "Natural vs. lab-grown — do they compete?",
-    scenario: "Brilliant Earth sells both natural and lab-grown 1-carat diamond rings. In 2024: natural diamond price = <strong>$6,000/carat</strong>, lab-grown sales = <strong>80 rings/month</strong>. When De Beers cut prices and natural diamonds dropped to <strong>$5,000/carat</strong>, lab-grown sales fell to <strong>64 rings/month</strong>.",
-    context: {
-      what: "Cross-price elasticity — it measures how much MY product's demand changes when a DIFFERENT product's price changes. The sign tells you the relationship: substitutes compete, complements go together.",
-      why: "Brilliant Earth sells both types. If natural diamond prices drop, will customers ditch lab-grown rings? The cross-price elasticity of 1.22 tells them exactly how exposed their lab-grown business is to De Beers' pricing decisions.",
-      who: "Standard concept from microeconomics; formalized in demand theory. Baye & Prince cover it in Chapter 3, pages 85–87. Paul Zimnisky's Diamond Analytics uses this kind of analysis for industry forecasting.",
-      when: "Whenever two products might be substitutes (competing for the same buyers) or complements (bought together). Essential for competitive strategy: knowing your competitor's price move could hurt you before it happens.",
-      how: "Same arc formula as own-price, but %ΔQ is for product X (lab-grown) and %ΔP is for product Y (natural diamonds). The SIGN of the result is the key finding."
-    },
-    parts: [
-      {
-        label: "Part a",
-        q: "Calculate the cross-price elasticity between lab-grown rings (X) and natural diamonds (Y).",
-        formula: { label: "Cross-Price Elasticity", expr: "E_xy  =  %ΔQ_x  ÷  %ΔP_y" },
-        steps: [
-          { lbl: "Avg lab-grown Q", math: "(64 + 80) / 2", res: "= 72" },
-          { lbl: "%ΔQ_x (lab-grown)", math: "(64 − 80) / 72", res: "= −0.2222  →  −22.22%" },
-          { lbl: "Avg natural price", math: "(5,000 + 6,000) / 2", res: "= 5,500" },
-          { lbl: "%ΔP_y (natural)", math: "(5,000 − 6,000) / 5,500", res: "= −0.1818  →  −18.18%" },
-          { lbl: "E_xy", math: "(−22.22%) ÷ (−18.18%)", res: "≈ +1.22" },
-        ],
-        answer: "E_xy ≈ +1.22",
-        interp: "When natural diamond prices drop 1%, lab-grown demand drops ~1.22%. A strong and highly significant relationship."
-      },
-      {
-        label: "Part b",
-        q: "Are natural and lab-grown diamonds substitutes or complements? How do you know?",
-        formula: { label: "Sign interpretation", expr: "E_xy  >  0  →  SUBSTITUTES  (they compete)\nE_xy  <  0  →  COMPLEMENTS  (bought together)" },
-        steps: [
-          { lbl: "Our E_xy sign", math: "+1.22  →  positive", res: "→  SUBSTITUTES" },
-          { lbl: "Logic check", math: "Natural gets cheaper → customers switch to natural → fewer lab-grown sold", res: "✓ confirms substitutes" },
-        ],
-        answer: "Substitutes — E_xy is positive (+1.22)",
-        interp: "Natural and lab-grown diamonds compete for the same buyer and the same occasion (engagement ring center stone). When natural gets cheaper, lab-grown loses sales. They are rivals, not partners."
-      },
-      {
-        label: "Part c",
-        q: "What is the managerial implication for Brilliant Earth's lab-grown pricing strategy?",
-        formula: { label: "Strategic implication", expr: "High |E_xy| = high competitive exposure to competitor's price moves" },
-        steps: [
-          { lbl: "E_xy = 1.22 means", math: "A 10% drop in natural diamond prices", res: "→ ~12.2% drop in lab-grown sales" },
-          { lbl: "Risk scenario", math: "De Beers cuts natural prices 20%", res: "→ Brilliant Earth loses ~24% of lab-grown volume" },
-          { lbl: "Strategic response options", math: "Price-match, or differentiate so buyers don't treat them as identical", res: "→ SCS-007 certification creates differentiation" },
-        ],
-        answer: "Brilliant Earth must monitor natural diamond prices closely and build differentiation that reduces substitutability.",
-        interp: "This is exactly why sustainability certification matters strategically — if lab-grown diamonds can be marketed as ethically superior and verifiably sustainable, buyers are less likely to switch back to natural diamonds just because natural prices dropped."
-      }
-    ]
-  },
-  {
-    ch: 1, id: "p3", num: "Problem 3", diff: "beginner",
-    topic: "Income Elasticity",
-    title: "MBA bonuses and diamond demand",
-    scenario: "A Philadelphia jeweler tracks income vs. demand. In 2023: average household income = <strong>$90,000</strong>, sold <strong>120 items/month</strong>. In 2024: income rose to <strong>$99,000</strong> (+10%), and monthly sales climbed to <strong>132 items</strong>.",
-    context: {
-      what: "Income elasticity of demand — it measures how much the quantity demanded changes when people's income changes. If income goes up 10% and you buy 20% more of something, that good is income-elastic (a luxury). If you buy 5% more, it's a necessity.",
-      why: "Diamond retailers need to know how badly a recession would hurt them. If diamonds are a luxury (E_I > 1), an economic downturn hits sales disproportionately hard. This changes hiring, inventory, and hedging decisions.",
-      who: "Ernst Engel (1850s) first studied this by observing Belgian working-class spending patterns. He found that as income rises, food's share of spending falls — now called Engel's Law. Modern income elasticity is refined in Baye & Prince Ch. 3.",
-      when: "For business planning and forecasting. If a recession cuts average incomes 5%, how much do diamond sales fall? If the economy booms, how much extra can you make? This also helps with credit risk and inventory planning.",
-      how: "Same arc formula structure, but replace %ΔP with %ΔIncome. Then classify: is E_I positive or negative? Greater than 1 or less than 1?"
-    },
-    parts: [
-      {
-        label: "Part a",
-        q: "Calculate the income elasticity of demand for diamond jewelry.",
-        formula: { label: "Income Elasticity", expr: "E_I  =  %ΔQ  ÷  %ΔI\n(arc formula: use averages in denominator)" },
-        steps: [
-          { lbl: "Avg quantity", math: "(132 + 120) / 2", res: "= 126" },
-          { lbl: "%ΔQ", math: "(132 − 120) / 126", res: "= 0.0952  →  9.52%" },
-          { lbl: "Avg income", math: "($99,000 + $90,000) / 2", res: "= $94,500" },
-          { lbl: "%ΔI", math: "($99,000 − $90,000) / $94,500", res: "= 0.0952  →  9.52%" },
-          { lbl: "E_I", math: "9.52% ÷ 9.52%", res: "= 1.0" },
-        ],
-        answer: "E_I = 1.0",
-        interp: "A 9.52% rise in income produced exactly a 9.52% rise in diamond sales. This one data point puts us right on the luxury/necessity boundary."
-      },
-      {
-        label: "Part b",
-        q: "Is diamond jewelry a normal good or inferior? A luxury or a necessity?",
-        formula: { label: "Classification by E_I value", expr: "E_I  > 1    →  luxury good\n0 < E_I < 1  →  normal necessity\nE_I  < 0    →  inferior good (demand falls as income rises)" },
-        steps: [
-          { lbl: "E_I sign", math: "+1.0  →  positive", res: "→  NORMAL good (demand rises with income)" },
-          { lbl: "E_I magnitude", math: "1.0  =  exactly 1", res: "→  on the luxury/necessity boundary" },
-          { lbl: "Literature estimate", math: "Real-world diamond E_I = 1.0 to 2.5", res: "→  diamonds classified as LUXURY goods" },
-        ],
-        answer: "Normal good, borderline luxury. Real-world estimates put diamonds at E_I = 1.0–2.5.",
-        interp: "This single data point lands right at 1.0 but the broader empirical literature puts diamonds firmly in luxury territory. When incomes rise, people upgrade to bigger stones; when incomes fall, they delay or downsize purchases."
-      },
-      {
-        label: "Part c",
-        q: "What does this imply for the retailer's revenue during an expansion vs. a recession?",
-        formula: { label: "Business cycle amplification", expr: "Luxury goods are procyclical:\nBooms → disproportionate sales gain\nRecessions → disproportionate sales loss" },
-        steps: [
-          { lbl: "Expansion scenario", math: "Income rises 10%  →  E_I ≈ 1.5 (midrange)", res: "→  diamond sales rise ~15%" },
-          { lbl: "Recession scenario", math: "Income falls 10%  →  same E_I", res: "→  diamond sales fall ~15%" },
-          { lbl: "Implication", math: "Revenue swings larger than the economy", res: "→  manage inventory and staffing carefully through cycles" },
-        ],
-        answer: "Diamonds outperform during booms and underperform during recessions — more volatile than the overall economy.",
-        interp: "This is the key argument for SCS-007 certification as a premium positioning strategy: certified diamonds command higher prices and more loyal buyers, which helps cushion revenue during downturns when price-sensitive buyers disappear."
+        answer:"Revenue stayed exactly the same: $600,000 both months.",
+        interp:"This is the Total Revenue Test in action: unit elastic demand means price changes don't move revenue. The volume gain precisely offsets the per-unit revenue loss — dollar for dollar."
       }
     ]
   },
 
-  // ── CHAPTER 2 ──────────────────────────────────────────────────────────
-  {
-    ch: 2, id: "p4", num: "Problem 4", diff: "beginner",
-    topic: "Externalities & Social Cost",
-    title: "Coal vs. solar energy at GreenGem Labs",
-    scenario: "GreenGem Labs produces lab-grown diamonds using <strong>250 kWh per polished carat</strong>. Option A — Coal grid: <strong>$0.08/kWh</strong>, emits <strong>0.9 kg CO₂/kWh</strong>. Option B — Solar farm: <strong>$0.14/kWh</strong>, emits <strong>0 CO₂</strong>. The social cost of carbon = <strong>$50/metric ton = $0.05/kg CO₂</strong>.",
-    context: {
-      what: "Externalities are costs (or benefits) created by a firm that fall on people who aren't part of the transaction. Coal burning creates CO₂ that heats the planet — GreenGem doesn't pay for that damage. The people who do? Everyone else on Earth.",
-      why: "If GreenGem only looks at its electricity bill, it picks coal — it's cheaper for them. But that ignores $11.25 of climate damage per carat that society absorbs. When private costs don't match social costs, markets choose the 'wrong' option from society's perspective.",
-      who: "Arthur Cecil Pigou (The Economics of Welfare, 1920) identified this problem and proposed the fix: a tax equal to the external damage. Ronald Coase (1960) added nuance: if transaction costs are low, private bargaining can also fix externalities — but with many affected parties (like climate change), Pigouvian taxes are needed.",
-      when: "Any production process that creates pollution, carbon emissions, waste, or any other cost that falls on third parties. Mining, manufacturing, transportation — the externalities question is always lurking.",
-      how: "Calculate private cost (what the firm pays), then add external cost (damage to others) to get social cost. Compare private vs. social optima. Then back-calculate what tax would make private optimal = social optimal."
+  { ch:1, id:"p2", num:"Problem 2", diff:"beginner", topic:"Cross-Price Elasticity", title:"Do natural and lab-grown diamonds compete?",
+    scenario:"Brilliant Earth sells both types. In 2024: natural price = <strong>$6,000/carat</strong>, lab-grown sales = <strong>80 rings/month</strong>. When De Beers cut prices and natural diamonds fell to <strong>$5,000</strong>, lab-grown sales dropped to <strong>64 rings/month</strong>.",
+    context:{
+      what:"Cross-price elasticity (E_xy) measures how much demand for good X changes when the price of good Y changes. The SIGN reveals the economic relationship: positive = substitutes (they compete), negative = complements (bought together). The magnitude tells you how strong the link is.",
+      why:"Brilliant Earth sells both natural and lab-grown. If natural diamond prices drop, will customers ditch lab-grown? An E_xy of +1.22 means yes — strongly. This is critical competitive intelligence: De Beers cutting prices becomes Brilliant Earth's problem too.",
+      who:"Cross-price elasticity is standard demand theory, covered in Baye & Prince Ch. 3 (pp. 85–87). Paul Zimnisky's Diamond Analytics uses exactly this kind of analysis to forecast lab-grown vs. natural market share dynamics.",
+      when:"Any time two products might be substitutes or complements. Essential before entering a market (who are your real competitors?), setting prices, or responding to competitor moves. Also used by antitrust regulators to define relevant markets.",
+      how:"Use the same arc formula as own-price elasticity, but %ΔQ is for product X (lab-grown) and %ΔP is for product Y (natural diamonds). The SIGN of the result — not just the number — is the key finding."
     },
-    parts: [
-      {
-        label: "Part a",
-        q: "Calculate the private energy cost per carat for each option.",
-        formula: { label: "Private Cost", expr: "Private Cost  =  kWh used per carat  ×  electricity price" },
-        steps: [
-          { lbl: "Coal private cost", math: "250 kWh × $0.08/kWh", res: "= $20.00 per carat" },
-          { lbl: "Solar private cost", math: "250 kWh × $0.14/kWh", res: "= $35.00 per carat" },
-          { lbl: "Difference", math: "$35.00 − $20.00", res: "= $15.00 cheaper for coal" },
+    parts:[
+      { label:"Part a", q:"Calculate the cross-price elasticity of lab-grown demand (X) with respect to natural diamond price (Y).",
+        formula:{ label:"Cross-Price Elasticity",
+          html:`${vt('Exy','Exy')} = ${vt('%ΔQ_x','pctQ')} ÷ ${vt('%ΔP_y','pctP')}` },
+        varKeys:['Exy','Qx','Px','Py','pctQ','pctP'],
+        steps:[
+          {lbl:"Avg lab-grown Q",math:"(64 + 80) / 2",res:"= 72"},
+          {lbl:"%ΔQ_x (lab-grown)",math:"(64 − 80) / 72",res:"= −0.2222 → −22.22%"},
+          {lbl:"Avg natural price",math:"($5,000 + $6,000) / 2",res:"= $5,500"},
+          {lbl:"%ΔP_y (natural)",math:"($5,000 − $6,000) / $5,500",res:"= −0.1818 → −18.18%"},
+          {lbl:"E_xy",math:"(−22.22%) ÷ (−18.18%)",res:"≈ +1.22"},
         ],
-        answer: "Coal: $20.00/carat  |  Solar: $35.00/carat  |  Coal saves $15 privately.",
-        interp: "If GreenGem only looks at its own cost, coal wins easily. But we haven't counted the CO₂ damage yet."
+        answer:"E_xy ≈ +1.22",
+        interp:"When natural diamond prices drop 1%, lab-grown demand drops ~1.22%. A strong, economically significant relationship — this is real competitive exposure."
       },
-      {
-        label: "Part b",
-        q: "Calculate the external cost (carbon damage) per carat for each option.",
-        formula: { label: "External Cost per carat", expr: "External Cost  =  kWh  ×  CO₂ per kWh  ×  social cost per kg CO₂" },
-        steps: [
-          { lbl: "Coal: CO₂ emitted", math: "250 kWh × 0.9 kg CO₂/kWh", res: "= 225 kg CO₂ per carat" },
-          { lbl: "Coal: external cost", math: "225 kg × $0.05/kg", res: "= $11.25 per carat" },
-          { lbl: "Solar: CO₂ emitted", math: "250 kWh × 0 kg CO₂/kWh", res: "= 0 kg CO₂" },
-          { lbl: "Solar: external cost", math: "0 kg × $0.05/kg", res: "= $0.00 per carat" },
+      { label:"Part b", q:"Are they substitutes or complements? How do you know?",
+        formula:{ label:"Sign interpretation",
+          html:`${vt('Exy','Exy')} > 0 → <strong style="color:var(--gold-light)">SUBSTITUTES</strong> (compete for same buyer) &nbsp;|&nbsp; ${vt('Exy','Exy')} < 0 → <strong style="color:var(--gold-light)">COMPLEMENTS</strong> (bought together)` },
+        varKeys:['Exy','Qx','Py'],
+        steps:[
+          {lbl:"Sign of our E_xy",math:"+1.22 → positive",res:"→ SUBSTITUTES"},
+          {lbl:"Intuition check",math:"Natural gets cheaper → buyers switch to natural → fewer lab-grown sold",res:"✓ confirms substitutes"},
+          {lbl:"Magnitude check",math:"|1.22| > 1",res:"→ strong substitute relationship"},
         ],
-        answer: "Coal: $11.25 external damage per carat  |  Solar: $0.00 external damage.",
-        interp: "That $11.25 is real economic harm — it just shows up in others' medical bills, crop losses, and long-run climate costs, not in GreenGem's ledger."
+        answer:"SUBSTITUTES — E_xy = +1.22 (positive and large).",
+        interp:"Natural and lab-grown diamonds compete for the same buyer and the same occasion (engagement ring center stone). They are rivals, not partners. The high magnitude (+1.22) means the competition is fierce."
       },
-      {
-        label: "Part c",
-        q: "Calculate total social cost (private + external) per carat for each option.",
-        formula: { label: "Social Cost Formula — Pigou's core insight", expr: "Social Cost  =  Private Cost  +  External Cost" },
-        steps: [
-          { lbl: "Coal social cost", math: "$20.00 + $11.25", res: "= $31.25 per carat" },
-          { lbl: "Solar social cost", math: "$35.00 + $0.00", res: "= $35.00 per carat" },
-          { lbl: "Gap shrinks", math: "Private gap was $15; social gap is only", res: "$3.75 — coal still wins socially (barely)" },
+      { label:"Part c", q:"What is the strategic implication for Brilliant Earth's lab-grown pricing?",
+        formula:{ label:"Strategic implication of high cross-price elasticity",
+          html:`High |${vt('Exy','Exy')}| = high competitive exposure to rival's price moves` },
+        varKeys:['Exy'],
+        steps:[
+          {lbl:"If natural prices drop 10%",math:"E_xy = 1.22 → lab-grown demand drops 12.2%",res:"significant volume loss"},
+          {lbl:"If natural prices drop 20%",math:"Lab-grown demand drops ~24.4%",res:"severe volume loss"},
+          {lbl:"Strategic options",math:"(1) Price-match natural  (2) Differentiate so buyers stop treating them as identical",res:"SCS-007 certification supports option 2"},
         ],
-        answer: "Coal total social cost: $31.25/carat  |  Solar: $35.00/carat.",
-        interp: "Adding carbon externalities cuts coal's advantage from $15 to $3.75. A higher carbon price (or lower solar cost) would flip this."
-      },
-      {
-        label: "Part d",
-        q: "Which option does GreenGem choose privately? Which is socially optimal?",
-        formula: { label: "The divergence Pigou identified", expr: "Private optimum: minimize private cost\nSocial optimum: minimize social cost" },
-        steps: [
-          { lbl: "GreenGem private choice", math: "Coal ($20) < Solar ($35)", res: "→ chooses COAL" },
-          { lbl: "Socially optimal", math: "Coal SC ($31.25) < Solar SC ($35)", res: "→ coal still socially optimal here" },
-          { lbl: "But the externality exists", math: "Coal causes $11.25 in unpriced damage", res: "→ market outcome is not efficient — damage is uncompensated" },
-        ],
-        answer: "GreenGem picks coal privately. Coal is still the social optimum — but only if carbon damage is priced in. Without pricing, the externality is ignored and uncompensated.",
-        interp: "The divergence here isn't which source to pick — it's that $11.25 of real harm is happening and no one is paying for it. Pigouvian policy fixes this by making GreenGem internalize the damage."
-      },
-      {
-        label: "Part e",
-        q: "What Pigouvian tax per kWh on coal electricity would make GreenGem indifferent between coal and solar?",
-        formula: { label: "Pigouvian tax design", expr: "Set:  Coal private cost + tax  =  Solar private cost\nSolve for:  tax" },
-        steps: [
-          { lbl: "Set costs equal", math: "$20.00 + tax = $35.00", res: "→ tax per carat = $15.00" },
-          { lbl: "Convert to per-kWh tax", math: "$15.00 ÷ 250 kWh", res: "= $0.06 per kWh on coal" },
-          { lbl: "Current carbon price implied", math: "0.9 kg CO₂ × $0.05/kg = $0.045/kWh", res: "< $0.06 needed → current price too low" },
-        ],
-        answer: "A tax of $0.06/kWh on coal electricity would make GreenGem indifferent between coal and solar.",
-        interp: "At the current social cost of carbon ($50/ton), the implied tax is $0.045/kWh — not quite enough. To fully incentivize solar, the carbon price would need to rise to ~$67/ton, or solar costs would need to fall by $15/carat."
-      }
-    ]
-  },
-  {
-    ch: 2, id: "p5", num: "Problem 5", diff: "intermediate",
-    topic: "Net Externalities & MSC",
-    title: "Mining with positive and negative externalities",
-    scenario: "Karowe Mining (Botswana) produces diamonds with marginal private cost: <strong>MPC = 40 + 0.002Q</strong>. Each carat mined creates <strong>$15 negative externalities</strong> (environmental) and <strong>$10 positive externalities</strong> (jobs, tax revenue, infrastructure). Market price = <strong>$120/carat</strong>.",
-    context: {
-      what: "Most real-world situations have BOTH positive and negative externalities. The policy question isn't 'do externalities exist' — it's 'what's the NET external effect?' Only after netting out positive vs. negative externalities do you know whether to tax (net negative) or subsidize (net positive).",
-      why: "Botswana's government earns roughly 30% of GDP from diamonds. They care deeply about the positive externalities (jobs, schools, roads) from mining. But they also have to weigh the environmental damage. This problem forces you to quantify the tradeoff.",
-      who: "The net externality framework comes from welfare economics (Pigou, Baumol). Ronald Coase (1960) famously argued the direction of the tax depends on the NET social cost, not just the gross harm.",
-      when: "Whenever a firm creates BOTH costs and benefits for third parties simultaneously. Common in mining, energy, agriculture, and pharmaceutical research (positive externalities from R&D spill-overs).",
-      how: "Net external cost = negative externalities minus positive externalities. Add net MEC to MPC to get MSC. Set P = MSC to find socially optimal output. Pigouvian tax = net MEC."
-    },
-    parts: [
-      {
-        label: "Part a",
-        q: "What is the net external cost per carat? Write the MSC function.",
-        formula: { label: "Net Externality and MSC", expr: "Net MEC  =  Negative externality − Positive externality\nMSC  =  MPC  +  Net MEC" },
-        steps: [
-          { lbl: "Negative externality", math: "$15 per carat", res: "environmental damage" },
-          { lbl: "Positive externality", math: "$10 per carat", res: "jobs, taxes, infrastructure" },
-          { lbl: "Net MEC", math: "$15 − $10", res: "= $5 net external cost per carat" },
-          { lbl: "MSC function", math: "MSC = MPC + $5 = (40 + 0.002Q) + 5", res: "MSC = 45 + 0.002Q" },
-        ],
-        answer: "Net MEC = $5/carat  |  MSC = 45 + 0.002Q",
-        interp: "The mine imposes $5 of net harm per carat on society — after accounting for the genuine benefits it creates. This net figure is what the Pigouvian tax should target."
-      },
-      {
-        label: "Part b",
-        q: "Find the profit-maximizing output (P = MPC) and the socially optimal output (P = MSC).",
-        formula: { label: "Setting price equal to cost", expr: "Profit max: P  =  MPC  →  solve for Q\nSocial optimum: P  =  MSC  →  solve for Q" },
-        steps: [
-          { lbl: "Profit max: P = MPC", math: "120 = 40 + 0.002Q", res: "→  0.002Q = 80  →  Q* = 40,000 carats" },
-          { lbl: "Social optimum: P = MSC", math: "120 = 45 + 0.002Q", res: "→  0.002Q = 75  →  Q** = 37,500 carats" },
-        ],
-        answer: "Profit-maximizing output: Q* = 40,000 carats/year  |  Socially optimal: Q** = 37,500 carats/year",
-        interp: "The mine produces 2,500 carats MORE per year than is socially optimal, because it ignores the $5/carat net damage its production causes."
-      },
-      {
-        label: "Part c",
-        q: "Is the mine overproducing or underproducing relative to the social optimum? By how many carats?",
-        formula: { label: "Output gap", expr: "Overproduction = Q* (private) − Q** (social)" },
-        steps: [
-          { lbl: "Private output", math: "40,000 carats", res: "" },
-          { lbl: "Social optimum", math: "37,500 carats", res: "" },
-          { lbl: "Excess output", math: "40,000 − 37,500", res: "= 2,500 carats of overproduction" },
-        ],
-        answer: "Overproducing by 2,500 carats per year.",
-        interp: "This is the classic negative externality result: firms that don't pay for the damage they cause always produce too much. The extra 2,500 carats creates net social harm of $5 × 2,500 = $12,500/year."
-      },
-      {
-        label: "Part d",
-        q: "What Pigouvian tax per carat would move the mine to the socially optimal output?",
-        formula: { label: "Pigouvian tax rule", expr: "Tax  =  Net MEC at socially optimal output\n(in this linear model, the net MEC is constant)" },
-        steps: [
-          { lbl: "Net MEC", math: "constant at $5 per carat", res: "regardless of output level" },
-          { lbl: "Tax = Net MEC", math: "t*  =  $5 per carat", res: "→ verified: 120 − 5 = 115; 115 = 40 + 0.002Q → Q = 37,500 ✓" },
-        ],
-        answer: "Pigouvian tax = $5 per carat",
-        interp: "With a $5/carat tax, the mine's effective price becomes $115 (= $120 − $5 tax). Setting MPC = $115 gives Q = 37,500 — exactly the social optimum."
-      },
-      {
-        label: "Part e",
-        q: "Evaluate Botswana's argument that positive externalities justify no intervention.",
-        formula: { label: "Policy evaluation using net externality", expr: "Justify no intervention only if: Net MEC  ≤  0\n(i.e., positive externalities ≥ negative externalities)" },
-        steps: [
-          { lbl: "Botswana's claim", math: "Positive externalities = $10 per carat", res: "→ these are real and large" },
-          { lbl: "But negative externalities", math: "= $15 per carat", res: "→ exceed the positives" },
-          { lbl: "Net MEC", math: "$15 − $10 = $5 net harm", res: "→ intervention IS justified" },
-          { lbl: "Correct policy", math: "Tax = $5, not $15 or $0", res: "→ acknowledges both effects" },
-        ],
-        answer: "Botswana's argument is PARTIALLY correct but ultimately wrong. Positive externalities reduce the optimal tax — from $15 to $5 — but don't eliminate the case for intervention entirely.",
-        interp: "This is the nuanced real-world answer: positive externalities from mining ARE legitimate and should reduce the Pigouvian tax. But netting them out still leaves $5/carat of net harm. A government that ignores this is leaving real social welfare on the table."
+        answer:"Brilliant Earth must monitor natural diamond pricing closely and invest in differentiation that reduces substitutability.",
+        interp:"This is the core strategic argument for sustainability certification: if lab-grown diamonds are verifiably more ethical and traceable, buyers become less likely to switch to natural diamonds just because prices dropped slightly."
       }
     ]
   },
 
-  // ── CHAPTER 3 ──────────────────────────────────────────────────────────
-  {
-    ch: 3, id: "p6", num: "Problem 6", diff: "beginner",
-    topic: "Public Goods & Free-Riding",
-    title: "Who pays for the SCS-007 standard?",
-    scenario: "Creating the SCS-007 standard cost <strong>$2 million</strong>. There are <strong>20 diamond producers</strong> in the industry. Each producer gains <strong>$180,000</strong> in consumer trust benefits if the standard exists — whether or not they helped fund it.",
-    context: {
-      what: "A public good has two properties: (1) non-rivalrous — one person using it doesn't reduce what's available to others, and (2) non-excludable — you can't stop people from benefiting even if they didn't pay. A sustainability standard is a public good: once the criteria exist, any company can read them and benchmark against them for free.",
-      why: "If any company can benefit from the SCS-007 standard without paying to develop it, every company wants to be the free-rider. But if everyone free-rides, nobody funds it — and it never gets made, even though the total benefit ($3.6M) far exceeds the total cost ($2M). This is a market failure.",
-      who: "Paul Samuelson defined public goods in 1954. Mancur Olson (1965) showed in 'The Logic of Collective Action' why rational individuals free-ride even when cooperation is better. Elinor Ostrom won the 2009 Nobel by showing how communities sometimes solve this with smart institutions.",
-      when: "Any time an industry tries to coordinate on shared infrastructure: a common standard, a marketing campaign, industry research, or collective lobbying. The free-rider problem is everywhere in collective action situations.",
-      how: "Calculate total benefit vs. total cost. Then check each individual firm's incentive: is it better to contribute $100k or free-ride and keep the $100k? Show why free-riding dominates — then explain how certification fees fix it."
+  { ch:1, id:"p3", num:"Problem 3", diff:"beginner", topic:"Income Elasticity", title:"MBA bonuses and diamond demand",
+    scenario:"A Philadelphia jeweler tracks income vs. demand. 2023: avg household income = <strong>$90,000</strong>, monthly sales = <strong>120 items</strong>. 2024: income rose to <strong>$99,000</strong> (+10%), sales climbed to <strong>132 items</strong>.",
+    context:{
+      what:"Income elasticity of demand (E_I) measures how much the quantity demanded changes when consumer income changes. It tells you whether a good is a luxury (demand grows faster than income), a necessity (demand grows slower), or an inferior good (demand falls as income rises — like cheap ramen noodles).",
+      why:"Diamond retailers need to know how vulnerable they are to recessions. If diamonds are a luxury (E_I > 1), a 5% income drop could cut sales 8-12%. This affects hiring, inventory, financing, and whether to lock in long-term supplier contracts.",
+      who:"Ernst Engel (1850s) first studied income-spending relationships in Belgian working-class families, finding food's budget share shrinks as income rises (Engel's Law). Modern income elasticity extends this to all goods. Baye & Prince cover it in Ch. 3, pp. 88–90.",
+      when:"For macroeconomic forecasting and business cycle planning. Also used to compare market segments: are wealthy buyers more or less responsive to income changes than middle-income buyers? And to assess whether a new product is positioned as luxury vs. accessible.",
+      how:"Use the arc formula — same structure as own-price, but replace %ΔP with %ΔIncome. Then classify: positive or negative? Greater than 1 or less? This tells you the good's category and cyclical sensitivity."
     },
-    parts: [
-      {
-        label: "Part a",
-        q: "What is the total industry benefit from the standard? Does total benefit exceed total cost?",
-        formula: { label: "Total Benefit", expr: "Total Benefit  =  N firms  ×  benefit per firm" },
-        steps: [
-          { lbl: "Total industry benefit", math: "20 firms × $180,000", res: "= $3,600,000" },
-          { lbl: "Total cost", math: "Development cost", res: "= $2,000,000" },
-          { lbl: "Net social value", math: "$3,600,000 − $2,000,000", res: "= +$1,600,000  (YES — benefits exceed costs)" },
+    parts:[
+      { label:"Part a", q:"Calculate the income elasticity of demand for diamond jewelry.",
+        formula:{ label:"Income Elasticity — same arc structure, different denominator",
+          html:`${vt('EI','EI')} = ${vt('%ΔQ','pctQ')} ÷ ${vt('%ΔI','pctI')}` },
+        varKeys:['EI','pctQ','pctI'],
+        steps:[
+          {lbl:"Avg quantity",math:"(132 + 120) / 2",res:"= 126"},
+          {lbl:"%ΔQ",math:"(132 − 120) / 126",res:"= 0.0952 → 9.52%"},
+          {lbl:"Avg income",math:"($99,000 + $90,000) / 2",res:"= $94,500"},
+          {lbl:"%ΔI",math:"($99,000 − $90,000) / $94,500",res:"= 0.0952 → 9.52%"},
+          {lbl:"E_I",math:"9.52% ÷ 9.52%",res:"= 1.0"},
         ],
-        answer: "Total benefit = $3.6M. Total cost = $2M. Net value = $1.6M. The standard is absolutely worth making.",
-        interp: "So why doesn't it automatically get made? That's the next question — the math says yes, but the incentives say something different."
+        answer:"E_I = 1.0",
+        interp:"Income rose 9.52% and diamond sales rose exactly 9.52% — a 1:1 relationship. This single observation lands right on the luxury/necessity boundary."
       },
-      {
-        label: "Part b",
-        q: "If each of 20 firms is asked to contribute $100,000, would any individual firm have an incentive to do so?",
-        formula: { label: "Free-rider incentive calculation", expr: "Compare: payoff from contributing vs. payoff from free-riding" },
-        steps: [
-          { lbl: "If I contribute $100k", math: "I gain $180k in benefits, I pay $100k", res: "→ net = +$80k for me" },
-          { lbl: "If I free-ride (others contribute)", math: "I gain $180k, I pay $0", res: "→ net = +$180k for me" },
-          { lbl: "Comparison", math: "+$180k  >  +$80k", res: "→ free-riding is ALWAYS better for me" },
-          { lbl: "Every firm thinks the same", math: "Dominant strategy = free-ride", res: "→ Nash equilibrium: zero contributions" },
+      { label:"Part b", q:"Is diamond jewelry a normal or inferior good? A luxury or necessity?",
+        formula:{ label:"Classification by E_I value",
+          html:`${vt('EI','EI')} > 1 → <strong style="color:var(--gold-light)">luxury</strong> &nbsp;|&nbsp; 0 < ${vt('EI','EI')} < 1 → <strong style="color:var(--gold-light)">necessity</strong> &nbsp;|&nbsp; ${vt('EI','EI')} < 0 → <strong style="color:var(--gold-light)">inferior good</strong>` },
+        varKeys:['EI'],
+        steps:[
+          {lbl:"Sign of E_I",math:"+1.0 → positive",res:"→ NORMAL good (demand rises with income)"},
+          {lbl:"Magnitude",math:"= 1.0, right at the boundary",res:"→ borderline luxury"},
+          {lbl:"Empirical literature",math:"Real diamond E_I ≈ 1.0 to 2.5",res:"→ firmly classified as LUXURY"},
         ],
-        answer: "No individual firm has an incentive to voluntarily contribute — free-riding always pays more.",
-        interp: "Even though contributing gives a positive net benefit (+$80k), NOT contributing gives an even bigger benefit (+$180k). When individual rationality conflicts with collective rationality, individual rationality wins without institutional structure."
+        answer:"Normal good — borderline luxury. Empirical estimates: E_I = 1.0 to 2.5 for diamonds.",
+        interp:"This single data point lands at 1.0, but the broader evidence puts diamonds firmly in luxury territory. When incomes rise, people upgrade to larger or more elaborate diamonds; when incomes fall, they delay purchases or downsize."
       },
-      {
-        label: "Part c",
-        q: "Explain the free-rider problem. Why might the standard be underprovided despite the $1.6M net benefit?",
-        formula: { label: "Nash Equilibrium of the public goods game", expr: "Nash: everyone free-rides  →  zero contributions\nCooperative optimum: all contribute  →  $1.6M net value created" },
-        steps: [
-          { lbl: "Each firm's dominant strategy", math: "Don't contribute (free-ride)", res: "regardless of what others do" },
-          { lbl: "When all follow dominant strategy", math: "Zero contributions → standard not funded", res: "→ $1.6M net value DESTROYED" },
-          { lbl: "The gap", math: "Nash outcome vs. cooperative optimum", res: "= the value of good institutional design" },
+      { label:"Part c", q:"What does this imply for revenue during an expansion vs. a recession?",
+        formula:{ label:"Business cycle amplification for luxury goods",
+          html:`Luxury goods (${vt('EI','EI')} > 1) are <em>procyclical</em>: booms amplify gains, recessions amplify losses` },
+        varKeys:['EI'],
+        steps:[
+          {lbl:"Expansion: income +10%",math:"E_I ≈ 1.5 (midrange estimate) → sales rise ~15%",res:"outperforms the economy"},
+          {lbl:"Recession: income −10%",math:"Same E_I → sales fall ~15%",res:"underperforms the economy"},
+          {lbl:"Takeaway",math:"Diamond revenue is more volatile than income",res:"→ manage inventory and staffing conservatively before downturns"},
         ],
-        answer: "The standard may never be created because every firm free-rides on others. Individual rationality produces collective irrationality.",
-        interp: "This is the core tragedy of the commons / public goods problem. The market fails not because the good isn't valuable — it's extremely valuable — but because no private actor can capture enough of the benefit to justify paying the full cost."
-      },
-      {
-        label: "Part d",
-        q: "SCS Global Services funded the standard and recoups costs through certification fees. How does this fix the free-rider problem?",
-        formula: { label: "Club good transformation", expr: "Public good + excludability  =  Club good\nFree-riders excluded from the certification mark" },
-        steps: [
-          { lbl: "Standard criteria", math: "Publicly available online (non-excludable)", res: "→ still a public good" },
-          { lbl: "Certification MARK", math: "'SCS-007 Sustainability Rated' label", res: "→ EXCLUDABLE: only certified firms can use it" },
-          { lbl: "The incentive flip", math: "Certified firms get: price premiums, retailer contracts, consumer trust", res: "→ now there's a PRIVATE reason to pay certification fees" },
-          { lbl: "Free-riders", math: "Get the criteria but not the mark", res: "→ can't claim premium pricing without the cert" },
-        ],
-        answer: "Certification converts the standard from a public good into a club good — you only get the competitive advantage if you pay for and pass the audit.",
-        interp: "This is elegant institutional design: SCS Global Services solved the free-rider problem by creating partial excludability. The certification mark is the 'club' — and only dues-paying members get in."
-      }
-    ]
-  },
-  {
-    ch: 3, id: "p7", num: "Problem 7", diff: "intermediate",
-    topic: "Coordination Games & Thresholds",
-    title: "Certification as a threshold contribution game",
-    scenario: "Eight lab-grown producers each independently decide whether to pursue SCS-007 certification (cost: <strong>$150,000</strong> per firm). If <strong>4+ firms certify</strong>: every firm gets a reputation benefit worth <strong>$120,000</strong>. If <strong>fewer than 4 certify</strong>: reputation benefit = only <strong>$25,000</strong>. Certified firms also get an individual differentiation bonus of <strong>$80,000</strong> (uncertified firms don't).",
-    context: {
-      what: "A threshold public goods game — the collective benefit only materializes if enough players contribute. Below the threshold, the good isn't really provided. This creates a coordination problem: each firm's incentive to certify depends on how many others are certifying.",
-      why: "This models exactly the real dilemma facing lab-grown diamond producers. If only 1–2 certify, the industry doesn't get the credibility boost. If 4+ certify, the whole market for 'certified sustainable' becomes real — and everyone benefits. But who goes first?",
-      who: "Thomas Schelling (The Strategy of Conflict, 1960) analyzed focal points and coordination games. Elinor Ostrom's work on common-pool resources addresses threshold effects. The concept of tipping points in coordination games is central to Baye & Prince Chapter 10.",
-      when: "Whenever the VALUE of a collective action depends on HOW MANY participate. Network effects, industry standards, tipping points, social movements — these all have threshold structures.",
-      how: "Build a payoff table for each scenario (threshold met vs. not met). Check each firm's incentive given what others are doing. Identify Nash equilibria. Note that zero-certification CAN be a Nash equilibrium even though mass certification would be better."
-    },
-    parts: [
-      {
-        label: "Part a",
-        q: "Build a payoff table: net benefit for firm i from certifying vs. not certifying, under each threshold scenario.",
-        formula: { label: "Net Benefit", expr: "Net  =  Reputation benefit + Differentiation bonus − Certification cost" },
-        steps: [
-          { lbl: "Threshold MET (4+ certify): Certify", math: "$120,000 + $80,000 − $150,000", res: "= +$50,000" },
-          { lbl: "Threshold MET (4+ certify): Don't certify", math: "$120,000 + $0 − $0", res: "= +$120,000" },
-          { lbl: "Threshold NOT MET (<4): Certify", math: "$25,000 + $80,000 − $150,000", res: "= −$45,000" },
-          { lbl: "Threshold NOT MET (<4): Don't certify", math: "$25,000 + $0 − $0", res: "= +$25,000" },
-        ],
-        answer: "Threshold met: Certify = +$50k, Don't certify = +$120k  |  Threshold not met: Certify = −$45k, Don't certify = +$25k",
-        interp: "In BOTH scenarios, not certifying pays more than certifying. This means 'don't certify' appears to be a dominant strategy — but only if you ignore how your decision affects whether the threshold is met."
-      },
-      {
-        label: "Part b",
-        q: "Should firm i certify if exactly 3 others are already certifying (firm i would be the 4th)? What if exactly 4 others are certifying?",
-        formula: { label: "Marginal decision at the threshold", expr: "If firm i is the 4th certifier: threshold is triggered by their choice\nIf firm i joins 4 others: threshold already met" },
-        steps: [
-          { lbl: "Firm i is the 4th (3 others in)", math: "Certify → threshold met → +$50k vs. Not certify → threshold not met → +$25k", res: "Certify pays more (+$50k > +$25k) — CERTIFY" },
-          { lbl: "Firm i would be 5th (4 others already in)", math: "Certify → +$50k vs. Not certify (threshold met either way) → +$120k", res: "Free-ride pays more (+$120k > +$50k) — DON'T CERTIFY" },
-        ],
-        answer: "Be the 4th: YES, certify (you tip the threshold). Be the 5th+: NO, free-ride on the threshold others already met.",
-        interp: "The 4th firm has a pivotal role — its decision actually determines whether the industry-wide benefit materializes. This is a tipping point: one firm's choice has outsized consequences."
-      },
-      {
-        label: "Part c",
-        q: "Explain why zero firms certifying can be a Nash equilibrium even though 4+ certifying produces higher total welfare.",
-        formula: { label: "Nash equilibrium test", expr: "Nash: no firm can improve payoff by unilaterally changing strategy\nCooperative optimum: maximizes total industry welfare" },
-        steps: [
-          { lbl: "If zero firms are certifying", math: "Firm i certifies alone: threshold not met → −$45k", res: "→ worse than not certifying (+$25k) → no deviation" },
-          { lbl: "Nash equilibrium", math: "Zero certification: no firm wants to move first (loses $45k)", res: "→ zero certification IS a Nash equilibrium" },
-          { lbl: "But if 4 certify", math: "Total industry welfare from 4 certifying = 4×$50k + 4×$120k = $680k", res: "vs. zero certification = 8×$25k = $200k" },
-          { lbl: "Welfare gap", math: "$680k − $200k", res: "= $480k of value destroyed by coordination failure" },
-        ],
-        answer: "Zero certification is Nash because no single firm profits from breaking ranks. But collective certification creates $480k more value — a massive coordination failure.",
-        interp: "This is why the zero-certification Nash equilibrium is so dangerous — it's stable but leaves enormous value on the table. Industry associations, government nudges, and high-profile early adopters (first movers) can tip the equilibrium to the better outcome."
-      },
-      {
-        label: "Part d",
-        q: "How does SCS-007's Pillar 5 (20% of fees to artisanal mining communities) create an additional public goods dimension?",
-        formula: { label: "Nested public goods", expr: "Pillar 5 = public good WITHIN the club good structure" },
-        steps: [
-          { lbl: "Who pays for Pillar 5?", math: "Only certified firms (20% of their fees go to communities)", res: "→ certified firms internalize this cost" },
-          { lbl: "Who benefits?", math: "All consumers benefit from ethical sourcing narrative", res: "→ including buyers of UNCERTIFIED diamonds" },
-          { lbl: "Free-rider here", math: "Uncertified diamond sellers benefit from the industry's improved ESG image", res: "→ without contributing to it" },
-          { lbl: "Nested structure", math: "Club certification fees (excludable) fund artisanal community support (non-excludable)", res: "→ club good financing a public good" },
-        ],
-        answer: "Pillar 5 creates a positive externality that all diamond sellers enjoy, but only certified firms pay for — a public good nested inside the club structure.",
-        interp: "This is sophisticated institutional design: SCS-007 uses the club mechanism to fund a genuine public good (community support) that would otherwise be underprovided. The certified firms effectively act as public goods providers for the wider industry."
+        answer:"Diamonds outperform during booms and underperform during recessions — more cyclically volatile than the overall economy.",
+        interp:"This is the strategic argument for premium certification: SCS-007-certified diamonds command higher prices and more loyal buyers, which provides some cushion when price-sensitive buyers disappear in recessions. Differentiation reduces elasticity."
       }
     ]
   },
 
-  // ── CHAPTER 4 ──────────────────────────────────────────────────────────
-  {
-    ch: 4, id: "p8", num: "Problem 8", diff: "beginner",
-    topic: "Akerlof's Lemons & Adverse Selection",
-    title: "Adverse selection in the sustainable diamond market",
-    scenario: "A retailer sources from two supplier types: <strong>Genuinely sustainable</strong> (100% renewable, full traceability): production cost = <strong>$420/carat</strong>, consumer value = <strong>$850</strong>. <strong>Greenwashers</strong> (coal-powered, minimal traceability): cost = <strong>$210/carat</strong>, consumer value = <strong>$480</strong>. Buyers cannot distinguish them. Market is <strong>40% genuine, 60% greenwasher</strong>.",
-    context: {
-      what: "Adverse selection happens when information asymmetry — one party knowing more than the other — systematically drives GOOD options out of the market. George Akerlof used used cars as his example: sellers know if a car is a lemon, buyers can't tell, so only lemons end up being sold.",
-      why: "In the diamond sustainability market, every producer has an incentive to claim their diamonds are sustainably sourced (cheap marketing). But genuinely sustainable production costs more. If buyers can't tell the difference, they offer an average price — which may be too low for real sustainable producers but great for greenwashers.",
-      who: "George Akerlof published 'The Market for Lemons: Quality Uncertainty and the Market Mechanism' in 1970. He, Michael Spence, and Joseph Stiglitz shared the 2001 Nobel Prize in Economics for their work on information asymmetry. It's one of the most cited economics papers ever written.",
-      when: "Any time buyers cannot observe product quality before purchase, and sellers have an incentive to misrepresent. Health insurance (adverse selection by sick people), job markets (adverse selection by unproductive workers), and sustainable product markets (greenwashing).",
-      how: "Calculate the expected value buyers will pay (probability-weighted average of quality values). Check if genuine producers can survive at that price. Show how market composition shifts over time, driving prices down and quality out."
+  // ── CH 2 ──────────────────────────────────────────────────────────────
+  { ch:2, id:"p4", num:"Problem 4", diff:"beginner", topic:"Externalities & Social Cost", title:"Coal vs. solar at GreenGem Labs",
+    scenario:"GreenGem uses <strong>250 kWh per polished carat</strong>. Coal grid: <strong>$0.08/kWh</strong>, emits <strong>0.9 kg CO₂/kWh</strong>. Solar farm: <strong>$0.14/kWh</strong>, emits <strong>0 CO₂</strong>. Social cost of carbon = <strong>$50/metric ton = $0.05/kg CO₂</strong>.",
+    context:{
+      what:"Externalities are costs (or benefits) a firm creates for people who are NOT part of the transaction. Coal burning pumps CO₂ into the atmosphere — the firm doesn't pay for the resulting climate damage, but everyone else absorbs it. This divergence between private and social cost is the fundamental market failure Pigou identified.",
+      why:"If GreenGem only looks at its electricity bill, it picks coal — it's $15/carat cheaper. But that ignores $11.25 of climate damage per carat. From society's perspective, the choice is between $31.25 (coal) and $35.00 (solar) — a much smaller gap. Good policy makes GreenGem face the real choice.",
+      who:"Arthur Cecil Pigou (<em>The Economics of Welfare</em>, 1920) identified that when private costs ≠ social costs, markets overproduce the harmful good. His solution — a corrective tax equal to marginal external cost — is called a Pigouvian tax and is the foundation of environmental economics and carbon pricing.",
+      when:"Any production process creating pollution, carbon emissions, or other costs that fall on third parties. Mining, manufacturing, energy, transportation, agriculture. The key question: what external damage does each unit of production cause, and who pays for it?",
+      how:"Calculate private cost (what the firm pays), add external cost (damage to others) = social cost. Compare private optimal vs. social optimal. Then back-calculate: what tax would make private cost = social cost, pushing the firm to the social optimum on its own?"
     },
-    parts: [
-      {
-        label: "Part a",
-        q: "If consumers can't distinguish suppliers, what price does the market settle on?",
-        formula: { label: "Expected Value — what buyers rationally offer", expr: "E[V]  =  p₁ × V₁  +  p₂ × V₂  +  ..." },
-        steps: [
-          { lbl: "Genuine: share × value", math: "0.40 × $850", res: "= $340" },
-          { lbl: "Greenwasher: share × value", math: "0.60 × $480", res: "= $288" },
-          { lbl: "Market price E[V]", math: "$340 + $288", res: "= $628 per carat" },
+    parts:[
+      { label:"Part a", q:"Calculate the private energy cost per carat for each option.",
+        formula:{ label:"Private Cost — what the firm pays, ignoring external damage",
+          html:`Private Cost = kWh per carat × electricity price` },
+        varKeys:['MPC','SC'],
+        steps:[
+          {lbl:"Coal private cost",math:"250 kWh × $0.08/kWh",res:"= $20.00 per carat"},
+          {lbl:"Solar private cost",math:"250 kWh × $0.14/kWh",res:"= $35.00 per carat"},
+          {lbl:"Private cost gap",math:"$35.00 − $20.00",res:"= $15.00 — coal is cheaper privately"},
         ],
-        answer: "Market price settles at $628 — the probability-weighted average quality value.",
-        interp: "Buyers are rational — they know the market has both types and offer accordingly. But this one number determines whether genuine producers can survive."
+        answer:"Coal: $20.00/carat  |  Solar: $35.00/carat  |  Coal saves $15 per carat privately.",
+        interp:"If GreenGem only sees its own ledger, coal wins easily. But we haven't counted the CO₂ damage yet — and that changes the picture."
       },
-      {
-        label: "Part b",
-        q: "At the $628 market price, can genuine sustainable producers cover their costs? What about greenwashers?",
-        formula: { label: "Survival condition", expr: "Producer survives if:  Market Price  ≥  Production Cost" },
-        steps: [
-          { lbl: "Genuine producers", math: "$628 market price vs. $420 cost", res: "→ $208 profit — they SURVIVE (for now)" },
-          { lbl: "Greenwashers", math: "$628 market price vs. $210 cost", res: "→ $418 profit — massive margin" },
-          { lbl: "The asymmetry", math: "Greenwashers earn TWICE as much profit", res: "→ incentivizes more greenwashers to enter" },
+      { label:"Part b", q:"Calculate the external cost (carbon damage) per carat for each option.",
+        formula:{ label:"External Cost — damage imposed on others per carat produced",
+          html:`${vt('MEC','MEC')} per carat = kWh × CO₂ per kWh × social cost per kg CO₂` },
+        varKeys:['MEC','SC'],
+        steps:[
+          {lbl:"Coal: CO₂ emitted",math:"250 kWh × 0.9 kg/kWh",res:"= 225 kg CO₂ per carat"},
+          {lbl:"Coal: external cost",math:"225 kg × $0.05/kg",res:"= $11.25 per carat"},
+          {lbl:"Solar: CO₂ emitted",math:"250 × 0 kg/kWh",res:"= 0 kg CO₂"},
+          {lbl:"Solar: external cost",math:"0 × $0.05",res:"= $0.00 per carat"},
         ],
-        answer: "Both survive initially — but greenwashers earn $418/carat profit vs. genuine producers' $208/carat.",
-        interp: "The huge profit margin for greenwashers is the danger signal. It attracts new entrants who adopt the greenwashing strategy. As more enter, market composition shifts and average quality drops."
+        answer:"Coal: $11.25 external damage per carat  |  Solar: $0.00",
+        interp:"$11.25 per carat is real economic harm — it just shows up in others' climate costs, health bills, and agricultural losses, not in GreenGem's ledger. This is why markets fail to price it."
       },
-      {
-        label: "Part c",
-        q: "What happens over time? Walk through Akerlof's adverse selection logic step by step.",
-        formula: { label: "Adverse selection spiral", expr: "↑ Greenwashers → ↓ E[V] → ↓ Price → ↑ Genuine exit → repeat" },
-        steps: [
-          { lbl: "Round 1: greenwashers enter", math: "Genuine falls to 20%, greenwasher rises to 80%", res: "New E[V] = 0.20×$850 + 0.80×$480 = $554" },
-          { lbl: "Round 2: genuine at $554 vs $420 cost", math: "$554 − $420 = $134 profit (still positive)", res: "→ some genuine stay, but market is eroding" },
-          { lbl: "Round 3: if genuine exits entirely", math: "E[V] = 1.0 × $480", res: "= $480 — market has fully collapsed to greenwashers" },
-          { lbl: "Final state", math: "Price = $480, only greenwashers remain", res: "→ 'sustainable diamond' label is worthless" },
+      { label:"Part c", q:"Calculate total social cost (private + external) per carat.",
+        formula:{ label:"Social Cost — Pigou's core equation",
+          html:`${vt('SC','SC')} = ${vt('MPC','MPC')} + ${vt('MEC','MEC')}` },
+        varKeys:['SC','MPC','MEC'],
+        steps:[
+          {lbl:"Coal social cost",math:"$20.00 + $11.25",res:"= $31.25 per carat"},
+          {lbl:"Solar social cost",math:"$35.00 + $0.00",res:"= $35.00 per carat"},
+          {lbl:"Social gap",math:"$35.00 − $31.25",res:"= $3.75 — coal still cheaper socially (barely)"},
         ],
-        answer: "The market unravels in rounds: greenwashers crowd out genuine producers until only low-quality remains and the 'sustainable' category loses all credibility.",
-        interp: "Akerlof's insight: the market doesn't just redistribute income — it destroys value. The category of 'sustainable diamonds' collapses entirely even though consumers genuinely wanted it and were willing to pay more."
+        answer:"Coal social cost: $31.25/carat  |  Solar: $35.00/carat.",
+        interp:"Accounting for carbon externalities cuts coal's advantage from $15 to $3.75. A higher carbon price or lower solar cost would flip this entirely."
       },
-      {
-        label: "Part d",
-        q: "How does this analysis explain Brilliant Earth's creation of a proprietary 'Beyond Conflict Free' standard?",
-        formula: { label: "Signaling attempt — and its limits", expr: "Proprietary standard = attempt to signal quality\nBut: self-certified = low credibility" },
-        steps: [
-          { lbl: "Brilliant Earth's problem", math: "They know their diamonds are genuine but buyers can't tell", res: "→ facing the lemons problem directly" },
-          { lbl: "Their response", math: "Create own detailed criteria and label them 'Beyond Conflict Free'", res: "→ an attempt to signal quality" },
-          { lbl: "The weakness", math: "Brilliant Earth both SETS and GRADES its own standard", res: "→ no independent verification → low credibility" },
-          { lbl: "Why it's still rational", math: "Even a weak signal is better than no signal", res: "→ but it's not as powerful as SCS-007 third-party audit" },
+      { label:"Part d", q:"Which option does GreenGem choose privately? Which is socially optimal?",
+        formula:{ label:"The divergence Pigou identified",
+          html:`Private optimum: minimize ${vt('MPC','MPC')} &nbsp;|&nbsp; Social optimum: minimize ${vt('SC','SC')}` },
+        varKeys:['MPC','SC','MEC'],
+        steps:[
+          {lbl:"GreenGem private choice",math:"Coal ($20) < Solar ($35)",res:"→ chooses COAL"},
+          {lbl:"Social optimum",math:"Coal SC ($31.25) < Solar SC ($35)",res:"→ coal is also social optimum here"},
+          {lbl:"But the externality",math:"$11.25/carat of damage is uncompensated",res:"→ market outcome is inefficient even if coal 'wins'"},
         ],
-        answer: "Brilliant Earth correctly diagnosed the lemons problem and tried to fix it with a proprietary signal — but self-certification lacks the credibility of independent third-party verification.",
-        interp: "Chapter 5 (Spence signaling) explains why: a signal is only credible if it's DIFFERENTIALLY COSTLY — harder for low-quality firms to mimic. A standard you write yourself isn't differentially costly; anyone can write marketing criteria."
+        answer:"GreenGem picks coal privately. Coal is still the social optimum at current carbon prices — but $11.25 of real damage per carat goes unpriced and uncompensated.",
+        interp:"The divergence here isn't about which source to pick — it's that $11.25 of harm happens and nobody pays for it. Pigouvian policy forces GreenGem to internalize this, making the firm's private choice align with society's interest."
+      },
+      { label:"Part e", q:"What Pigouvian tax per kWh on coal would make GreenGem indifferent between coal and solar?",
+        formula:{ label:"Pigouvian tax design — solve for the tax that equalizes private costs",
+          html:`Set: Coal private cost + ${vt('t','t')} = Solar private cost → solve for ${vt('t','t')}` },
+        varKeys:['t','MEC','MPC'],
+        steps:[
+          {lbl:"Set coal cost + tax = solar cost",math:"$20.00 + tax per carat = $35.00",res:"→ tax per carat = $15.00"},
+          {lbl:"Convert to per-kWh",math:"$15.00 per carat ÷ 250 kWh",res:"= $0.06 per kWh on coal"},
+          {lbl:"Current carbon price implies",math:"0.9 kg × $0.05/kg = $0.045/kWh",res:"< $0.06 needed → current price too low to flip choice"},
+        ],
+        answer:"A tax of $0.06/kWh on coal electricity would make GreenGem indifferent between coal and solar.",
+        interp:"The current social cost of carbon ($50/ton) implies a $0.045/kWh coal tax — not quite enough to make solar privately optimal. Carbon pricing would need to rise to ~$67/ton, or solar costs fall another $3.75/carat, to tip the private choice."
       }
     ]
   },
-  {
-    ch: 4, id: "p9", num: "Problem 9", diff: "intermediate",
-    topic: "Multi-Tier Adverse Selection",
-    title: "Market unraveling with three quality tiers",
-    scenario: "Three equal-share tiers (1/3 each): <strong>High</strong> (SCS-007 certifiable): cost $550, consumer value $1,000. <strong>Medium</strong> (some practices): cost $350, value $650. <strong>Low</strong> (greenwashing): cost $180, value $350. Consumers cannot distinguish tiers.",
-    context: {
-      what: "Akerlof's original model had two tiers. Real markets have many. With multiple tiers, the unraveling is more complex and more devastating — it happens in stages, each round driving out one more tier, until only the worst remains.",
-      why: "This is exactly what's happening in the real diamond sustainability market. The 'sustainable diamond' category has High (genuinely certified), Medium (some efforts), and Low (pure greenwashing) producers. The multi-tier model predicts the full collapse trajectory.",
-      who: "Charles Wilson (1980, Bell Journal of Economics) extended Akerlof's model to multiple quality tiers, showing how the unraveling happens sequentially. Baye & Prince reference this in Ch. 12. The mathematical structure is the same — expected value, exit condition — applied iteratively.",
-      when: "Any market with more than two quality levels where buyers can't observe quality. This is extremely common: job markets, insurance, health products, and sustainability certification all exhibit multi-tier adverse selection.",
-      how: "Step 1: Calculate pooled E[V] across all tiers. Step 2: Check which tiers exit (where price < cost). Step 3: Recalculate E[V] with remaining tiers. Repeat until stable. Then explain how SCS-007 stops this by separating tiers."
+
+  { ch:2, id:"p5", num:"Problem 5", diff:"intermediate", topic:"Net Externalities & MSC Functions", title:"Mining with positive and negative externalities",
+    scenario:"Karowe Mining (Botswana). Marginal private cost: <strong>MPC = 40 + 0.002Q</strong>. Each carat creates <strong>$15 negative externalities</strong> (environmental) and <strong>$10 positive externalities</strong> (jobs, taxes, infrastructure). Market price = <strong>$120/carat</strong>.",
+    context:{
+      what:"Real-world externalities are almost never one-sided. Diamond mines cause environmental damage (negative) AND create jobs and tax revenue that fund schools and hospitals (positive). The policy question is the NET effect — and only after netting out do you know whether to tax or subsidize, and by how much.",
+      why:"Botswana's government earns ~30% of GDP from diamonds. The positive externalities (jobs, schools, roads) are enormous. But environmental damage is real too. A policy that ignores positive externalities overtaxes mining and destroys livelihoods. A policy that ignores negative externalities allows uncompensated harm. The NET approach balances both.",
+      who:"The net externality framework extends Pigou (1920). William Baumol ('On Taxation and the Control of Externalities', 1972) formalized how Pigouvian taxes should be calibrated. Ronald Coase (1960) emphasized that the direction of the tax depends entirely on the net social cost, not gross harm.",
+      when:"Any production process creating both costs and benefits for third parties simultaneously: mining, energy, pharmaceutical R&D (positive spillovers from research), agriculture (soil health vs. runoff). The net approach prevents both over-taxation (ignoring positives) and under-taxation (ignoring negatives).",
+      how:"Net MEC = negative externalities minus positive externalities. Add net MEC to MPC to get MSC. Set P = MSC to find the socially optimal Q. Compare to private Q (where P = MPC). Difference is the overproduction. Optimal Pigouvian tax = net MEC."
     },
-    parts: [
-      {
-        label: "Part a",
-        q: "If consumers cannot distinguish tiers, what is the initial pooled market price?",
-        formula: { label: "Pooled Expected Value — all three tiers", expr: "E[V]  =  (1/3)×V_High  +  (1/3)×V_Med  +  (1/3)×V_Low" },
-        steps: [
-          { lbl: "High tier contribution", math: "(1/3) × $1,000", res: "= $333.33" },
-          { lbl: "Medium tier contribution", math: "(1/3) × $650", res: "= $216.67" },
-          { lbl: "Low tier contribution", math: "(1/3) × $350", res: "= $116.67" },
-          { lbl: "Pooled E[V]", math: "$333.33 + $216.67 + $116.67", res: "= $666.67 per carat" },
+    parts:[
+      { label:"Part a", q:"What is the net external cost per carat? Write the marginal social cost (MSC) function.",
+        formula:{ label:"Net Externality and MSC",
+          html:`Net ${vt('MEC','netMEC')} = Negative ext. − Positive ext. &nbsp;|&nbsp; ${vt('MSC','MSC')} = ${vt('MPC','MPC')} + Net ${vt('MEC','netMEC')}` },
+        varKeys:['MEC','netMEC','MSC','MPC'],
+        steps:[
+          {lbl:"Negative externality",math:"$15 per carat",res:"environmental damage"},
+          {lbl:"Positive externality",math:"$10 per carat",res:"jobs, taxes, infrastructure"},
+          {lbl:"Net MEC",math:"$15 − $10",res:"= $5 net external cost per carat"},
+          {lbl:"MSC function",math:"MSC = (40 + 0.002Q) + $5",res:"= 45 + 0.002Q"},
         ],
-        answer: "Initial pooled market price: $666.67 per carat",
-        interp: "Buyers rationally offer the average value across all three tiers. Now check: which producers can survive at this price?"
+        answer:"Net MEC = $5/carat  |  MSC = 45 + 0.002Q",
+        interp:"The mine imposes $5 of net harm per carat on society — after crediting the genuine benefits it creates. This $5 is the correct Pigouvian tax target, not $15 (ignoring positives) or $0 (ignoring negatives)."
       },
-      {
-        label: "Part b",
-        q: "Which tiers exit the market at $666.67? Recalculate the pooled price after exit.",
-        formula: { label: "Exit condition", expr: "Exit if:  Market Price  <  Production Cost" },
-        steps: [
-          { lbl: "High: $666.67 vs cost $550", math: "$666.67 > $550", res: "→ profitable, STAYS" },
-          { lbl: "Medium: $666.67 vs cost $350", math: "$666.67 > $350", res: "→ profitable, STAYS" },
-          { lbl: "Low: $666.67 vs cost $180", math: "$666.67 > $180", res: "→ profitable, STAYS" },
-          { lbl: "But High exit incentive?", math: "High value = $1,000 but only gets $666.67", res: "→ they SHOULD price separately if possible, but can't in a pooled market" },
+      { label:"Part b", q:"Find the profit-maximizing output (P = MPC) and the socially optimal output (P = MSC).",
+        formula:{ label:"Output optimization rules",
+          html:`Private profit max: ${vt('P','P')} = ${vt('MPC','MPC')} → solve for ${vt('Q','Q')} &nbsp;|&nbsp; Social optimum: ${vt('P','P')} = ${vt('MSC','MSC')} → solve for ${vt('Q','Q')}` },
+        varKeys:['P','Q','MPC','MSC'],
+        steps:[
+          {lbl:"Private max: P = MPC",math:"120 = 40 + 0.002Q",res:"→ 0.002Q = 80 → Q* = 40,000 carats/year"},
+          {lbl:"Social optimum: P = MSC",math:"120 = 45 + 0.002Q",res:"→ 0.002Q = 75 → Q** = 37,500 carats/year"},
         ],
-        answer: "Round 1: No tier exits immediately — all can cover costs at $666.67. But High tier is under-compensated ($333 below their value).",
-        interp: "The unraveling isn't always immediate. The real dynamic is that the under-compensation of high-quality firms motivates them to seek separation — or gradually exit as greenwashers crowd the market and price falls."
+        answer:"Private output: Q* = 40,000 carats/year  |  Social optimum: Q** = 37,500 carats/year",
+        interp:"The mine produces 2,500 carats more per year than is socially optimal, because it ignores the $5/carat net damage its production causes. Every one of those extra 2,500 carats creates net social harm."
       },
-      {
-        label: "Part c",
-        q: "Does the market unravel further? Show each round until it stabilizes.",
-        formula: { label: "Sequential unraveling", expr: "If High exits → new E[V] from remaining tiers\nCheck exit condition again → repeat" },
-        steps: [
-          { lbl: "Suppose High exits (crowded out)", math: "New pool: Medium (1/2) + Low (1/2)", res: "E[V] = 0.5×$650 + 0.5×$350 = $500" },
-          { lbl: "Medium at $500 vs cost $350", math: "$500 > $350", res: "→ medium still covers costs" },
-          { lbl: "But if medium also exits", math: "Only Low remains", res: "E[V] = $350 (all greenwashers)" },
-          { lbl: "Low at $350 vs cost $180", math: "$350 > $180", res: "→ low survives; this is the stable state" },
+      { label:"Part c", q:"Is the mine overproducing or underproducing relative to the social optimum? By how many carats?",
+        formula:{ label:"Output gap",
+          html:`Overproduction = ${vt('Q','Q')}* (private) − ${vt('Q','Q')}** (social)` },
+        varKeys:['Q','MPC','MSC'],
+        steps:[
+          {lbl:"Private output Q*",math:"40,000 carats",res:""},
+          {lbl:"Social optimum Q**",math:"37,500 carats",res:""},
+          {lbl:"Excess output",math:"40,000 − 37,500",res:"= 2,500 carats of overproduction"},
+          {lbl:"Total harm from overproduction",math:"2,500 × $5 net MEC",res:"= $12,500/year in unaddressed net harm"},
         ],
-        answer: "Stable endpoint: only Low (greenwashing) tier remains at $350/carat. High and Medium eventually exit.",
-        interp: "This is the complete unraveling: $1,000-value diamonds are driven out of the market, and buyers end up with $350-value greenwashed product at $350 price. Total value destroyed: the entire High and Medium tier premium."
+        answer:"Overproducing by 2,500 carats per year — creating $12,500/year in uncompensated net social harm.",
+        interp:"This is the standard negative externality result: firms ignoring external costs always produce too much. Each of the extra 2,500 carats costs society $5 more to produce (in net harm) than it's worth to produce at the margin."
       },
-      {
-        label: "Part d",
-        q: "How does SCS-007 third-party certification prevent this unraveling — converting a pooling equilibrium into a separating equilibrium?",
-        formula: { label: "Separating equilibrium via certification", expr: "Pooling: all types get same price (market fails)\nSeparating: each type gets its true value (market works)" },
-        steps: [
-          { lbl: "Without certification", math: "All diamonds look the same to buyers → pooling equilibrium → $666.67 → unraveling", res: "= market failure" },
-          { lbl: "With SCS-007", math: "Only truly sustainable producers can pass the rigorous audit → certified mark = credible quality signal", res: "→ separating equilibrium" },
-          { lbl: "Certified diamonds", math: "Price = $1,000 (buyers know it's High tier)", res: "→ High tier stays, thrives" },
-          { lbl: "Uncertified diamonds", math: "Price = lower (buyers know it's Medium or Low)", res: "→ greenwashers exposed, can't claim premium" },
-          { lbl: "Result", math: "Market separates into tiers, each priced at true value", res: "→ adverse selection stopped" },
+      { label:"Part d", q:"What Pigouvian tax per carat would move the mine to the socially optimal output?",
+        formula:{ label:"Pigouvian tax rule",
+          html:`${vt('t','t')}* = Net ${vt('MEC','netMEC')} at the socially optimal output level` },
+        varKeys:['t','netMEC','MPC','MSC'],
+        steps:[
+          {lbl:"Net MEC (constant here)",math:"$5 per carat at all output levels",res:"→ linear model, constant MEC"},
+          {lbl:"Pigouvian tax",math:"t* = $5 per carat",res:""},
+          {lbl:"Verify: P − tax = MPC at Q**",math:"$120 − $5 = $115; 115 = 40 + 0.002Q → Q = 37,500",res:"✓ confirms Q** = 37,500"},
         ],
-        answer: "SCS-007 third-party certification converts pooling into separating equilibrium: certified = High value, uncertified = not-High. Unraveling stops because quality is now observable.",
-        interp: "This is the core economic value of independent third-party certification: it restores the market's ability to price quality accurately. Without it, the market destroys $650+ per carat of economic value. Chapter 5 (Spence) explains why the signal works — it's credible because it's differentially costly."
+        answer:"Pigouvian tax = $5 per carat.",
+        interp:"With a $5/carat tax, the mine's effective price becomes $115. Setting MPC = $115 gives exactly Q** = 37,500 — the social optimum. The firm adjusts its own production without the regulator needing to dictate an output level."
+      },
+      { label:"Part e", q:"Botswana argues positive externalities justify no intervention. Evaluate this.",
+        formula:{ label:"Policy evaluation using net externality",
+          html:`No intervention justified only if: Net ${vt('MEC','netMEC')} ≤ 0 (positives ≥ negatives)` },
+        varKeys:['netMEC','MEC'],
+        steps:[
+          {lbl:"Positive externalities",math:"$10/carat — real and significant",res:"→ reduces optimal tax"},
+          {lbl:"Negative externalities",math:"$15/carat — environmental damage",res:"→ exceeds positives"},
+          {lbl:"Net MEC",math:"$15 − $10 = $5 net harm",res:"→ intervention IS economically justified"},
+          {lbl:"Correct policy response",math:"Tax = $5 (not $15, not $0)",res:"→ acknowledges both sides of the ledger"},
+        ],
+        answer:"Botswana's argument is partially correct but ultimately wrong. Positive externalities reduce the optimal tax from $15 to $5 — but don't eliminate the case for intervention.",
+        interp:"This is the nuanced, real-world answer that a good economist gives: 'You're right that positives matter and should reduce the tax. But the net externality is still positive ($5), so some Pigouvian intervention is still warranted.' The correct policy honors both sides."
+      }
+    ]
+  },
+
+  // ── CH 3 ──────────────────────────────────────────────────────────────
+  { ch:3, id:"p6", num:"Problem 6", diff:"beginner", topic:"Public Goods & Free-Riding", title:"Who pays for the SCS-007 standard?",
+    scenario:"Creating SCS-007 cost <strong>$2 million</strong>. There are <strong>20 diamond producers</strong>. Each gains <strong>$180,000</strong> in consumer trust benefits if the standard exists — whether or not they helped fund it.",
+    context:{
+      what:"A public good has two properties: (1) non-rivalrous — one person using it doesn't reduce what's available for others, and (2) non-excludable — you can't stop people from benefiting even if they didn't pay. The SCS-007 criteria document is non-rivalrous (any firm can read it) but the certification mark is excludable (only paying, compliant firms can use it). That distinction is crucial.",
+      why:"If any producer can benefit from the standard's consumer trust effect without paying for its development, every producer wants to free-ride. When everyone reasons this way, nobody funds it — and the standard never gets made. This happens even when total benefits ($3.6M) far exceed total costs ($2M). That's the market failure.",
+      who:"Paul Samuelson defined public goods formally in 1954. Mancur Olson's <em>The Logic of Collective Action</em> (1965) showed why large groups systematically under-provide public goods. Elinor Ostrom won the 2009 Nobel Prize showing how communities can overcome this with smart institutional design.",
+      when:"Any time an industry tries to coordinate on shared infrastructure: a common standard, collective marketing, shared research, or lobbying. The free-rider problem appears wherever individual incentives conflict with collective rationality. It's one of the most common reasons government or industry associations step in.",
+      how:"Compare total benefit to total cost (should the good be provided?). Then analyze each firm's individual incentive: is free-riding more profitable than contributing? Show the Nash equilibrium. Then explain how SCS Global Services' club good structure flips the incentive."
+    },
+    parts:[
+      { label:"Part a", q:"What is the total industry benefit? Does it exceed total cost?",
+        formula:{ label:"Total Benefit Test",
+          html:`Total Benefit = ${vt('N','N')} firms × ${vt('B','B')} per firm` },
+        varKeys:['N','B','C'],
+        steps:[
+          {lbl:"Total industry benefit",math:"20 firms × $180,000",res:"= $3,600,000"},
+          {lbl:"Total cost",math:"development cost",res:"= $2,000,000"},
+          {lbl:"Net social value",math:"$3,600,000 − $2,000,000",res:"= +$1,600,000 — YES, benefits exceed costs"},
+        ],
+        answer:"Total benefit = $3.6M. Total cost = $2M. Net value = +$1.6M. The standard is clearly worth making.",
+        interp:"So why doesn't it automatically get made? That's the free-rider puzzle — the math says yes, but the incentives say something entirely different."
+      },
+      { label:"Part b", q:"If each firm is asked to voluntarily contribute $100,000 (equal share), would any individual firm do so?",
+        formula:{ label:"Free-rider incentive calculation",
+          html:`Compare: payoff from contributing ${vt('C','C')} vs. payoff from free-riding (paying $0)` },
+        varKeys:['N','B','C'],
+        steps:[
+          {lbl:"If I contribute $100k",math:"I gain $180k in benefits, I pay $100k",res:"→ net = +$80k for me"},
+          {lbl:"If I free-ride (others contribute)",math:"I gain $180k, I pay $0",res:"→ net = +$180k for me"},
+          {lbl:"Comparison",math:"+$180k > +$80k",res:"→ free-riding is ALWAYS better for any individual"},
+          {lbl:"Every firm thinks this",math:"dominant strategy = free-ride",res:"→ Nash: zero voluntary contributions"},
+        ],
+        answer:"No individual firm has incentive to contribute — free-riding always pays $100k more than contributing.",
+        interp:"Even though contributing gives a positive net return (+$80k), NOT contributing gives a better return (+$180k). When individual rationality conflicts with collective rationality, individual rationality wins — unless the institution changes the payoffs."
+      },
+      { label:"Part c", q:"Explain the free-rider problem. Why might the standard be underprovided?",
+        formula:{ label:"Nash Equilibrium of the public goods game",
+          html:`Nash equilibrium: all firms free-ride → zero contributions → standard not funded → $1.6M net value destroyed` },
+        varKeys:['N','B','C'],
+        steps:[
+          {lbl:"Each firm's dominant strategy",math:"don't contribute — regardless of what others do",res:"→ this is always the best individual response"},
+          {lbl:"When all firms follow",math:"zero contributions → standard not funded",res:"→ $1.6M net value goes unrealized"},
+          {lbl:"The gap",math:"Nash outcome (all free-ride) vs cooperative optimum (all contribute)",res:"= value destroyed by coordination failure"},
+        ],
+        answer:"The standard may never be created because every firm free-rides. Individual rationality produces collective irrationality.",
+        interp:"This is the core tragedy of the commons / public goods problem. The market fails not because the good isn't valuable — it's extremely valuable — but because no private actor can capture enough of the benefit to justify paying the full cost."
+      },
+      { label:"Part d", q:"How does SCS Global Services' certification fee structure fix the free-rider problem?",
+        formula:{ label:"Club good transformation",
+          html:`Public good + excludability = Club good → free-riders excluded from the certification mark and its competitive benefits` },
+        varKeys:['N','B','C'],
+        steps:[
+          {lbl:"Standard criteria",math:"publicly available online",res:"→ still non-excludable (public good)"},
+          {lbl:"Certification mark",math:"'SCS-007 Sustainability Rated' label",res:"→ EXCLUDABLE: only certified firms can use it"},
+          {lbl:"What certified firms get",math:"price premiums, retailer contracts, consumer trust, media coverage",res:"→ competitive advantages free-riders can't access"},
+          {lbl:"Incentive flip",math:"now there's a PRIVATE reason to pay certification fees",res:"→ free-rider problem solved"},
+        ],
+        answer:"Certification converts the standard from a pure public good into a club good — only dues-paying, audit-passing members get the competitive advantages.",
+        interp:"This is elegant institutional design: SCS Global Services solved the free-rider problem by creating partial excludability. The certification mark is the 'club.' Free-riders can read the criteria, but they can't claim the mark — and without the mark, they can't charge the premium."
+      }
+    ]
+  },
+
+  { ch:3, id:"p7", num:"Problem 7", diff:"intermediate", topic:"Coordination Games & Thresholds", title:"Certification as a threshold contribution game",
+    scenario:"Eight lab-grown producers each decide independently on SCS-007 certification (cost: <strong>$150,000 per firm</strong>). If <strong>4+ firms certify</strong>: every firm in the industry gets a reputation benefit worth <strong>$120,000</strong>. If <strong>fewer than 4 certify</strong>: benefit = only <strong>$25,000</strong>. Certified firms also get an individual differentiation bonus of <strong>$80,000</strong> that uncertified firms don't receive.",
+    context:{
+      what:"A threshold public goods game — the collective benefit only materializes if enough players contribute. Below the threshold, the public good is barely provided. Above it, a much larger benefit kicks in for everyone. This creates a tipping point: one firm's decision can tip the entire industry from one equilibrium to another.",
+      why:"This models the real lab-grown diamond market. If only 1–2 companies certify, buyers don't notice or trust it. If 4+ certify, a credible 'certified sustainable lab-grown' category emerges — with real pricing power. Every company's decision depends on what they think others will do.",
+      who:"Thomas Schelling's <em>The Strategy of Conflict</em> (1960) analyzed focal points and tipping points in coordination games. Elinor Ostrom's work addressed threshold collective action problems. Baye & Prince Chapter 10 covers game theory and coordination, and the concept of Nash equilibrium (John Nash, 1950) anchors the analysis.",
+      when:"Whenever the value of a collective action depends on HOW MANY people participate. Network effects (Facebook valueless with one user), industry standards (USB only useful if everyone uses it), social movements, and sustainability certification all have threshold structures.",
+      how:"Build a payoff table for each scenario (threshold met vs. not met). Check each firm's incentive given what others are doing. Identify all Nash equilibria — including the bad ones. Then explain what institutional mechanisms can tip the game to the better equilibrium."
+    },
+    parts:[
+      { label:"Part a", q:"Build a payoff table: net benefit for firm i from certifying vs. not certifying under each threshold scenario.",
+        formula:{ label:"Net Benefit formula",
+          html:`Net = Reputation benefit + Differentiation bonus − Certification ${vt('C','C')}` },
+        varKeys:['C','B','N'],
+        steps:[
+          {lbl:"Threshold MET — Certify",math:"$120,000 + $80,000 − $150,000",res:"= +$50,000"},
+          {lbl:"Threshold MET — Don't certify",math:"$120,000 + $0 − $0",res:"= +$120,000"},
+          {lbl:"Threshold NOT MET — Certify",math:"$25,000 + $80,000 − $150,000",res:"= −$45,000"},
+          {lbl:"Threshold NOT MET — Don't certify",math:"$25,000 + $0 − $0",res:"= +$25,000"},
+        ],
+        answer:"Threshold met: Certify = +$50k, Don't certify = +$120k  |  Threshold not met: Certify = −$45k, Don't certify = +$25k",
+        interp:"In BOTH scenarios, not certifying pays more than certifying for any individual firm. This makes 'don't certify' look like a dominant strategy — but the trap is that your decision determines whether the threshold is met."
+      },
+      { label:"Part b", q:"Should firm i certify if exactly 3 others are certifying (firm i = 4th)? What if 4 others are already in?",
+        formula:{ label:"Marginal decision at the tipping point",
+          html:`Firm i as the 4th certifier: their decision determines which threshold scenario the industry is in` },
+        varKeys:['C','B'],
+        steps:[
+          {lbl:"Firm i is the 4th (3 others in)",math:"Certify → threshold met → +$50k  vs.  Don't certify → threshold not met → +$25k",res:"→ +$50k > +$25k → CERTIFY"},
+          {lbl:"Firm i would be 5th (4 already in)",math:"Certify → +$50k  vs.  Don't certify (threshold already met) → +$120k",res:"→ +$120k > +$50k → DON'T CERTIFY, free-ride"},
+        ],
+        answer:"Be the 4th: YES, certify — you tip the threshold and it pays. Be the 5th+: NO, free-ride on the threshold others already met.",
+        interp:"The 4th firm has a pivotal, unique role — its certification tips the entire industry to the better equilibrium. This is a tipping point: one firm's choice has disproportionate consequences for everyone."
+      },
+      { label:"Part c", q:"Why can zero firms certifying be a Nash equilibrium despite the higher welfare from mass certification?",
+        formula:{ label:"Nash equilibrium test",
+          html:`Nash: no firm can improve their payoff by unilaterally changing strategy — even if the collective outcome is terrible` },
+        varKeys:['C','B','N'],
+        steps:[
+          {lbl:"If zero firms are certifying",math:"Firm i certifies alone: threshold not met → −$45k",res:"→ worse than not certifying (+$25k) → no deviation"},
+          {lbl:"Nash equilibrium",math:"zero certification: no firm wants to be the lone certifier",res:"→ zero certification IS a Nash equilibrium"},
+          {lbl:"Welfare from 4 certifying",math:"4×$50k + 4×$120k = $680k total industry",res:"vs. zero certification = 8×$25k = $200k"},
+          {lbl:"Welfare gap",math:"$680k − $200k",res:"= $480k of value destroyed by coordination failure"},
+        ],
+        answer:"Zero certification is Nash because no single firm profits from breaking ranks. Yet mass certification creates $480k more total industry value.",
+        interp:"Two Nash equilibria exist: (1) zero certification (bad but stable) and (2) 4+ certification (good and stable once reached). The industry can get stuck in the bad one — which is why first movers, industry associations, and government nudges matter."
+      },
+      { label:"Part d", q:"How does SCS-007's Pillar 5 (20% of fees to artisanal mining communities) create an additional public goods layer?",
+        formula:{ label:"Nested public goods — a club good financing a public good",
+          html:`Pillar 5 = positive externality funded by the club → benefits non-members too` },
+        varKeys:['N','B','C'],
+        steps:[
+          {lbl:"Who pays for Pillar 5?",math:"Only certified firms (20% of their fees → artisanal communities)",res:"→ certified firms bear this cost"},
+          {lbl:"Who benefits from the ESG narrative?",math:"All diamond sellers benefit from improved industry ethical image",res:"→ including uncertified competitors"},
+          {lbl:"Free-rider here",math:"Uncertified sellers benefit from certification-funded ESG narrative",res:"→ without contributing a dollar"},
+          {lbl:"Nested structure",math:"Club fees (excludable) finance artisanal support (non-excludable public good)",res:"→ club good funding a public good"},
+        ],
+        answer:"Pillar 5 creates a positive externality all diamond sellers enjoy, but only certified firms pay for — a public good nested inside the club structure.",
+        interp:"This is sophisticated institutional design: SCS-007 uses the club mechanism to fund a genuine public good (artisanal community support) that benefits the whole industry. Certified firms effectively subsidize the industry's ESG reputation — an implicit subsidy to their competitors."
+      }
+    ]
+  },
+
+  // ── CH 4 ──────────────────────────────────────────────────────────────
+  { ch:4, id:"p8", num:"Problem 8", diff:"beginner", topic:"Akerlof's Lemons & Adverse Selection", title:"Adverse selection in the sustainable diamond market",
+    scenario:"Two supplier types: <strong>Genuinely sustainable</strong> (100% renewable, full traceability): cost = <strong>$420/carat</strong>, consumer value = <strong>$850</strong>. <strong>Greenwashers</strong> (coal-powered, limited traceability): cost = <strong>$210/carat</strong>, value = <strong>$480</strong>. Buyers cannot distinguish them. Market = <strong>40% genuine, 60% greenwasher</strong>.",
+    context:{
+      what:"Adverse selection is what happens when information asymmetry — one party knowing more than the other — systematically pushes the WORST options into a market. Sellers know their diamond's production method; buyers can't see it. So buyers offer an average price, which underpays genuine producers and overpays greenwashers. Over time, only greenwashers remain.",
+      why:"This explains the 'sustainability credibility crisis' in diamonds. Every producer has cheap incentive to CLAIM sustainability. Few have expensive incentive to INVEST in it. If buyers can't distinguish investment from claims, the market for genuine sustainable diamonds collapses — exactly when consumers most want it.",
+      who:"George Akerlof published 'The Market for Lemons: Quality Uncertainty and the Market Mechanism' in the <em>Quarterly Journal of Economics</em> in 1970. He, Michael Spence, and Joseph Stiglitz shared the 2001 Nobel Prize in Economics for work on information asymmetry. The paper is among the most cited in all of economics.",
+      when:"Any market where sellers know more about quality than buyers and have incentive to misrepresent: used cars, health insurance (adverse selection by sick people who know they're sick), hiring (workers know their productivity better than employers), and sustainable product markets everywhere.",
+      how:"Calculate expected value E[V] — the probability-weighted average buyers rationally offer when they can't observe quality. Check whether genuine producers can survive at that price. Show how market composition shifts toward greenwashers over time, driving prices down and quality out."
+    },
+    parts:[
+      { label:"Part a", q:"If buyers can't distinguish suppliers, what price does the market settle on?",
+        formula:{ label:"Expected Value — what rational buyers offer under uncertainty",
+          html:`${vt('EV','EV')} = ${vt('p1','p1')} × ${vt('V1','V1')} (genuine) + ${vt('p1','p1')} × ${vt('V1','V1')} (greenwasher)` },
+        varKeys:['EV','p1','V1'],
+        steps:[
+          {lbl:"Genuine: share × value",math:"0.40 × $850",res:"= $340"},
+          {lbl:"Greenwasher: share × value",math:"0.60 × $480",res:"= $288"},
+          {lbl:"Market price E[V]",math:"$340 + $288",res:"= $628 per carat"},
+        ],
+        answer:"Market price settles at $628 — the probability-weighted average quality value.",
+        interp:"Buyers are rational — they know the market has both types and offer accordingly. But this single price determines whether genuine producers can survive."
+      },
+      { label:"Part b", q:"At $628, can genuine producers cover their costs? What about greenwashers?",
+        formula:{ label:"Survival condition",
+          html:`Producer survives if: Market Price ≥ Production Cost` },
+        varKeys:['EV','p1','V1'],
+        steps:[
+          {lbl:"Genuine: $628 vs. cost $420",math:"$628 > $420",res:"→ $208 profit — survive (barely)"},
+          {lbl:"Greenwasher: $628 vs. cost $210",math:"$628 > $210",res:"→ $418 profit — enormous margin"},
+          {lbl:"Profitability gap",math:"$418 vs. $208",res:"→ greenwashers earn 2× more profit → attract more entrants"},
+        ],
+        answer:"Both survive initially — but greenwashers earn $418/carat vs. genuine producers' $208/carat.",
+        interp:"The huge profit margin for greenwashers is the danger signal. It attracts new greenwashing entrants. As their share grows, average quality drops — and so does the market price."
+      },
+      { label:"Part c", q:"What happens over time? Walk through Akerlof's adverse selection spiral.",
+        formula:{ label:"Adverse selection spiral",
+          html:`↑ Greenwashers → ↓ ${vt('EV','EV')} → ↓ Price → Genuine exit → repeat` },
+        varKeys:['EV','p1','V1'],
+        steps:[
+          {lbl:"Round 1: more greenwashers enter",math:"Genuine falls to 20%, greenwasher rises to 80%",res:"New E[V] = 0.20×$850 + 0.80×$480 = $554"},
+          {lbl:"Round 2: genuine at $554 vs $420",math:"Still profitable ($134 margin) but shrinking",res:"→ more genuine exit as margins compress"},
+          {lbl:"Round 3: genuine exits entirely",math:"E[V] = 1.0 × $480",res:"= $480 — market fully collapsed to greenwashers"},
+          {lbl:"Final state",math:"Price = $480, only greenwashers",res:"→ 'sustainable diamond' label worthless"},
+        ],
+        answer:"Full unraveling: greenwashers crowd out genuine producers until only low-quality remains and 'sustainable diamonds' become a meaningless marketing term.",
+        interp:"Akerlof's insight: information asymmetry doesn't just redistribute income — it destroys entire markets and categories of value. The market for genuinely sustainable diamonds collapses even though consumers genuinely wanted it and were willing to pay $850 for it."
+      },
+      { label:"Part d", q:"Why did Brilliant Earth create a proprietary 'Beyond Conflict Free' standard — and why does it fall short?",
+        formula:{ label:"Signaling attempt and its credibility limits",
+          html:`Proprietary standard = attempt to signal quality without differential cost` },
+        varKeys:['EV','V1'],
+        steps:[
+          {lbl:"Brilliant Earth's problem",math:"knows its diamonds are genuine but buyers can't tell",res:"→ facing the lemons problem directly"},
+          {lbl:"Their response",math:"create 'Beyond Conflict Free' standard with detailed criteria",res:"→ attempt to signal quality to buyers"},
+          {lbl:"The credibility gap",math:"Brilliant Earth both WRITES and GRADES its own standard",res:"→ no independent verification → low credibility signal"},
+          {lbl:"Why it's still rational",math:"weak signal > no signal",res:"→ but far less powerful than SCS-007 third-party audit"},
+        ],
+        answer:"Brilliant Earth correctly diagnosed the lemons problem and tried to fix it with a proprietary signal — but self-certification lacks the credibility of independent verification.",
+        interp:"Chapter 5 (Spence signaling) explains why: a signal is credible only if it's DIFFERENTIALLY COSTLY — harder for low-quality firms to fake. A standard you write yourself fails this test. Anyone can write marketing criteria. Only rigorous third-party audits create a credibly costly signal."
+      }
+    ]
+  },
+
+  { ch:4, id:"p9", num:"Problem 9", diff:"intermediate", topic:"Multi-Tier Adverse Selection", title:"Three-tier market unraveling",
+    scenario:"Three equal-share tiers (1/3 each): <strong>High</strong> (SCS-007 certifiable): cost $550, value $1,000. <strong>Medium</strong> (some practices): cost $350, value $650. <strong>Low</strong> (greenwashing): cost $180, value $350. Buyers cannot distinguish tiers.",
+    context:{
+      what:"Akerlof's original model had two tiers (good cars and lemons). Real markets have many quality levels. With multiple tiers, the market unraveling is sequential and more devastating: the highest tier exits first (most undercompensated relative to true value), then the next, then the next — until only the worst remains.",
+      why:"This is the complete trajectory for the lab-grown sustainable diamond market without credible certification. High-quality producers (genuinely SCS-007 level) get paid the same as medium and low-quality producers. They exit or downgrade. Market quality falls. Price falls. Medium exits. Only greenwashers remain.",
+      who:"Charles Wilson extended Akerlof's model to multiple quality tiers in 'The Nature of Equilibrium in Markets with Adverse Selection' (Bell Journal of Economics, 1980), showing the sequential unraveling process. Rothschild & Stiglitz (1976) developed the separating vs. pooling equilibrium framework in insurance markets.",
+      when:"Any market with more than two quality levels where quality is unobservable. Job markets (multiple productivity levels), health products (multiple efficacy levels), consulting services, and sustainability claims all exhibit multi-tier adverse selection. The more tiers, the more devastating the unraveling.",
+      how:"Step 1: Calculate pooled E[V] across all tiers. Step 2: Check exit condition for each tier (price < cost → exit). Step 3: Recalculate E[V] with remaining tiers. Step 4: Repeat until stable. Step 5: Explain how SCS-007 certification creates a separating equilibrium that stops the process."
+    },
+    parts:[
+      { label:"Part a", q:"If buyers cannot distinguish tiers, what is the initial pooled market price?",
+        formula:{ label:"Three-tier Expected Value",
+          html:`${vt('EV','EV')} = (1/3)×${vt('V1','V1')}_High + (1/3)×${vt('V1','V1')}_Med + (1/3)×${vt('V1','V1')}_Low` },
+        varKeys:['EV','p1','V1'],
+        steps:[
+          {lbl:"High tier (1/3 × $1,000)",math:"0.333 × $1,000",res:"= $333.33"},
+          {lbl:"Medium tier (1/3 × $650)",math:"0.333 × $650",res:"= $216.67"},
+          {lbl:"Low tier (1/3 × $350)",math:"0.333 × $350",res:"= $116.67"},
+          {lbl:"Pooled E[V]",math:"$333.33 + $216.67 + $116.67",res:"= $666.67 per carat"},
+        ],
+        answer:"Initial pooled market price: $666.67 per carat.",
+        interp:"Buyers rationally offer the average value across all tiers. Now the key question: which producers can survive at this price — and which will eventually exit?"
+      },
+      { label:"Part b", q:"Which tiers exit at $666.67? Recalculate the pooled price after any exit.",
+        formula:{ label:"Exit condition — applied to each tier",
+          html:`Exit if: Market Price < Production Cost (can't cover costs → leave the market)` },
+        varKeys:['EV','V1'],
+        steps:[
+          {lbl:"High: $666.67 vs. cost $550",math:"$666.67 > $550",res:"→ +$116.67 profit — stays (for now)"},
+          {lbl:"Medium: $666.67 vs. cost $350",math:"$666.67 > $350",res:"→ +$316.67 profit — stays"},
+          {lbl:"Low: $666.67 vs. cost $180",math:"$666.67 > $180",res:"→ +$486.67 profit — stays"},
+          {lbl:"But High is undercompensated",math:"High value = $1,000 but gets $666.67",res:"→ $333 below their true value → motivation to find a way to signal"},
+        ],
+        answer:"Round 1: No tier immediately exits at $666.67 — all cover costs. But High tier is severely under-compensated relative to true value.",
+        interp:"The unraveling isn't always immediate. The real dynamic: High-tier producers are underpaid, so they seek certification or exit. Greenwashers' huge margins attract more entrants. Over time, market composition shifts."
+      },
+      { label:"Part c", q:"Show each round of exit until the market stabilizes.",
+        formula:{ label:"Sequential unraveling — recalculate E[V] after each exit",
+          html:`After High exits → new pool: Med + Low only → recalculate ${vt('EV','EV')} → check exits again` },
+        varKeys:['EV','p1','V1'],
+        steps:[
+          {lbl:"High exits (crowded out over time)",math:"New pool: Med (50%) + Low (50%)",res:"E[V] = 0.5×$650 + 0.5×$350 = $500"},
+          {lbl:"Medium: $500 vs. cost $350",math:"$500 > $350",res:"→ +$150 profit — medium stays (for now)"},
+          {lbl:"Low: $500 vs. cost $180",math:"$500 > $180",res:"→ +$320 profit — still very profitable"},
+          {lbl:"Medium's margins compress further",math:"As more Low enters, E[V] falls toward $350",res:"→ eventually Medium can't cover costs → exits"},
+          {lbl:"Final stable state",math:"Only Low remains: E[V] = $350 = Low's value",res:"→ complete unraveling, market is all greenwashers"},
+        ],
+        answer:"Stable endpoint: only Low tier (greenwashers) at $350/carat. High and Medium have exited. 'Sustainable diamond' as a category has collapsed.",
+        interp:"Total value destroyed: the entire premium consumers were willing to pay for High ($1,000) and Medium ($650) quality is gone. Consumers end up with $350 product at $350 price — and no option to buy what they actually wanted."
+      },
+      { label:"Part d", q:"How does SCS-007 convert a pooling equilibrium into a separating equilibrium — stopping the unraveling?",
+        formula:{ label:"Pooling vs. Separating Equilibrium",
+          html:`Pooling: all types priced at ${vt('EV','EV')} (market fails) → Separating: each type priced at true ${vt('V1','V1')} (market works)` },
+        varKeys:['EV','V1','p1'],
+        steps:[
+          {lbl:"Without certification (pooling)",math:"All look the same → E[V] = $666.67 → unraveling → collapse",res:"= market failure"},
+          {lbl:"With SCS-007 (separating)",math:"Rigorous audit creates observable quality signal",res:"→ certified = High tier, uncertified = unknown"},
+          {lbl:"Certified diamond price",math:"Buyers know it's High → willing to pay $1,000",res:"→ High tier survives, earns fair price"},
+          {lbl:"Uncertified diamond price",math:"Buyers know it's Medium or Low → lower price",res:"→ greenwashers can't claim $1,000 premium"},
+          {lbl:"Unraveling stops",math:"Quality is now observable → each tier priced correctly",res:"→ High tier thrives, market for genuine sustainability functions"},
+        ],
+        answer:"SCS-007 third-party certification creates a separating equilibrium: certified = observable High quality, uncertified = no premium. Adverse selection is stopped because quality is no longer hidden.",
+        interp:"This is the core economic value of rigorous independent certification. It restores the market's ability to price quality accurately — recovering the $333-$650/carat of value that the pooling equilibrium destroys. Chapter 5 (Spence) explains why the rigor matters: easy-to-fake signals don't separate types."
       }
     ]
   }
 ];
 
+// ── Popup HTML helper (used in formula HTML strings) ──────────────────────
+function popupHTML(varKey) {
+  const v = VARS[varKey];
+  if (!v) return '';
+  return `<div class="vtoken-popup">
+    <div class="vtoken-popup-symbol">${v.sym}</div>
+    <div class="vtoken-popup-name">${v.name}</div>
+    <div class="vtoken-popup-def">${v.def}</div>
+    <div class="vtoken-popup-example">${v.ex}</div>
+  </div>`;
+}
+
 // ── STATE ─────────────────────────────────────────────────────────────────
-let state = {
-  activeCh: 1,
-  activeQ: "p1",
-  activePart: 0,
-  activeTab: "what",
-  stepsRevealed: {},    // key -> count
-  partsDone: {},        // key -> bool
+const state = {
+  activeCh: 1, activeQ: "p1", activePart: 0, activeTab: "what",
+  stepsRevealed: {}, partsDone: {},
 };
+function key(qId, pi) { return qId + "_" + pi; }
+function totalParts(chId) { return QUESTIONS.filter(q=>q.ch===chId).reduce((a,q)=>a+q.parts.length,0); }
+function doneParts(chId) { let n=0; QUESTIONS.filter(q=>q.ch===chId).forEach(q=>q.parts.forEach((_,i)=>{if(state.partsDone[key(q.id,i)])n++;})); return n; }
+function totalAll() { return QUESTIONS.reduce((a,q)=>a+q.parts.length,0); }
+function doneAll() { return Object.values(state.partsDone).filter(Boolean).length; }
 
-function key(qId, partIdx) { return qId + "_" + partIdx; }
-
-function totalParts(chId) {
-  return QUESTIONS.filter(q => q.ch === chId).reduce((a, q) => a + q.parts.length, 0);
-}
-function doneParts(chId) {
-  let n = 0;
-  QUESTIONS.filter(q => q.ch === chId).forEach(q =>
-    q.parts.forEach((_, i) => { if (state.partsDone[key(q.id, i)]) n++; })
-  );
-  return n;
-}
-function totalAllParts() {
-  return QUESTIONS.reduce((a, q) => a + q.parts.length, 0);
-}
-function doneAllParts() {
-  return Object.values(state.partsDone).filter(Boolean).length;
-}
-
-// ── RENDERERS ─────────────────────────────────────────────────────────────
+// ── RENDER ────────────────────────────────────────────────────────────────
 function renderSidebar() {
-  document.querySelectorAll('.ch-btn').forEach(btn => {
-    const ch = parseInt(btn.dataset.ch);
-    btn.classList.toggle('active', ch === state.activeCh);
-  });
-
-  const chQs = QUESTIONS.filter(q => q.ch === state.activeCh);
-  const list = document.getElementById('q-list');
-  list.innerHTML = chQs.map(q => {
-    const allDone = q.parts.every((_, i) => state.partsDone[key(q.id, i)]);
-    return `<li class="q-item ${q.id === state.activeQ ? 'active' : ''} ${allDone ? 'done' : ''}"
-      onclick="switchQ('${q.id}')">
-      <span class="q-check">${allDone ? '✓' : ''}</span>
-      <span>${q.num}: ${q.topic}</span>
-    </li>`;
+  document.querySelectorAll('.ch-btn').forEach(b=>b.classList.toggle('active',parseInt(b.dataset.ch)===state.activeCh));
+  const chQs = QUESTIONS.filter(q=>q.ch===state.activeCh);
+  document.getElementById('q-list').innerHTML = chQs.map(q=>{
+    const done = q.parts.every((_,i)=>state.partsDone[key(q.id,i)]);
+    return `<li class="q-item ${q.id===state.activeQ?'active':''} ${done?'done':''}" onclick="switchQ('${q.id}')">
+      <span class="q-check">${done?'✓':''}</span><span>${q.num}: ${q.topic}</span></li>`;
   }).join('');
-
-  const ch = CHAPTERS.find(c => c.id === state.activeCh);
-  document.getElementById('ch-summary').textContent = ch.summary;
+  document.getElementById('ch-summary').textContent = CHAPTERS.find(c=>c.id===state.activeCh).summary;
 }
 
 function renderStats() {
-  const chId = state.activeCh;
-  const done = doneParts(chId);
-  const total = totalParts(chId);
-  const allDone = doneAllParts();
-  const allTotal = totalAllParts();
-  const pct = total > 0 ? Math.round((done/total)*100) : 0;
+  const chId=state.activeCh, done=doneParts(chId), total=totalParts(chId);
+  document.getElementById('stats-row').innerHTML = [
+    {v:`${done}/${total}`,l:"Chapter parts done"},
+    {v:`${total>0?Math.round(done/total*100):0}%`,l:"Chapter complete"},
+    {v:`${doneAll()}/${totalAll()}`,l:"Total parts done"},
+    {v:`${QUESTIONS.filter(q=>q.ch===chId).length}`,l:"Questions this chapter"},
+  ].map(s=>`<div class="stat-card"><div class="stat-val">${s.v}</div><div class="stat-lbl">${s.l}</div></div>`).join('');
+  document.getElementById('progress-pill').textContent = `${doneAll()} / ${totalAll()} parts`;
+}
 
-  document.getElementById('stats-row').innerHTML = `
-    <div class="stat-card">
-      <div class="stat-val">${done}/${total}</div>
-      <div class="stat-lbl">Chapter parts done</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val">${pct}%</div>
-      <div class="stat-lbl">Chapter complete</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val">${allDone}/${allTotal}</div>
-      <div class="stat-lbl">Total parts done</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val">${QUESTIONS.filter(q => q.ch === chId).length}</div>
-      <div class="stat-lbl">Questions this chapter</div>
-    </div>
-  `;
+function buildFormulaHTML(formula) {
+  if (formula.html) {
+    return `<div class="formula-box">
+      <div class="formula-lbl">${formula.label}</div>
+      <div class="formula-expr">${formula.html}</div>
+    </div>`;
+  }
+  return `<div class="formula-box">
+    <div class="formula-lbl">${formula.label}</div>
+    <div class="formula-expr">${formula.expr||''}</div>
+  </div>`;
+}
 
-  document.getElementById('progress-pill').textContent = `${allDone} / ${allTotal} parts`;
+function buildVarDefs(varKeys) {
+  if (!varKeys || varKeys.length === 0) return '';
+  const rows = varKeys.map(k=>{
+    const v = VARS[k]; if(!v) return '';
+    return `<div style="display:flex;align-items:baseline;gap:8px;padding:6px 0;border-bottom:1px solid var(--cream-3);">
+      <span style="font-family:'DM Mono',monospace;font-size:13px;color:#1F4E79;min-width:60px;font-weight:500">${v.sym}</span>
+      <span style="font-size:13px;color:var(--text);font-weight:500;min-width:160px">${v.name}</span>
+      <span style="font-size:12px;color:var(--text-muted);line-height:1.5">${v.def}</span>
+    </div>`;
+  }).join('');
+  return `<div style="margin-bottom:1rem">
+    <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px">Variable definitions — hover variables in formula for instant lookup</div>
+    <div style="background:var(--cream);border:1px solid var(--cream-3);border-radius:var(--radius);padding:4px 12px">${rows}</div>
+  </div>`;
+}
+
+function buildDeepExplainer(qId) {
+  const d = DEEP[qId]; if (!d) return '';
+  return `<div class="deep-explainer">
+    <div class="deep-explainer-title">${d.title} <span>— ${d.subtitle}</span></div>
+    <div class="deep-grid">
+      ${d.cards.map(c=>`<div class="deep-card">
+        <div class="deep-card-label">${c.label}</div>
+        <div class="deep-card-text">${c.text}</div>
+      </div>`).join('')}
+    </div>
+  </div>`;
 }
 
 function renderQuestion() {
-  const q = QUESTIONS.find(q => q.id === state.activeQ);
-  if (!q) return;
-
+  const q = QUESTIONS.find(q=>q.id===state.activeQ); if(!q) return;
   const part = q.parts[state.activePart];
   const pKey = key(q.id, state.activePart);
-  const revealed = state.stepsRevealed[pKey] || 0;
+  const revealed = state.stepsRevealed[pKey]||0;
   const isDone = !!state.partsDone[pKey];
-  const ctx = q.context[state.activeTab] || '';
-
-  const ctxClass = { what:'ctx-what', why:'ctx-why', who:'ctx-who', when:'ctx-when', how:'ctx-how' };
+  const ctx = q.context[state.activeTab]||'';
+  const ctxClass = {what:'ctx-what',why:'ctx-why',who:'ctx-who',when:'ctx-when',how:'ctx-how'};
 
   let stepsHTML = '';
-  for (let i = 0; i < revealed; i++) {
-    const s = part.steps[i];
-    stepsHTML += `<div class="calc-step-row">
+  for (let i=0;i<revealed;i++) {
+    const s=part.steps[i];
+    stepsHTML+=`<div class="calc-step-row">
       <div class="step-lbl">${s.lbl}</div>
       <div class="step-math">${s.math}</div>
       <div class="step-result">${s.res}</div>
@@ -1324,40 +1057,32 @@ function renderQuestion() {
   }
 
   let actionHTML = '';
-  if (revealed < part.steps.length) {
-    actionHTML = `<button class="btn btn-ghost" onclick="revealStep('${q.id}')">
-      Show step ${revealed + 1} of ${part.steps.length}
-    </button>`;
+  if (revealed===0) {
+    actionHTML = `<p class="reveal-hint">Click "Show step 1" to walk through the math one step at a time. The formula and variable definitions stay visible above.</p>
+      <div class="btn-row"><button class="btn btn-ghost" onclick="revealStep('${q.id}')">Show step 1 of ${part.steps.length}</button></div>`;
+  } else if (revealed < part.steps.length) {
+    actionHTML = `<div class="btn-row"><button class="btn btn-ghost" onclick="revealStep('${q.id}')">Show step ${revealed+1} of ${part.steps.length}</button></div>`;
   } else if (!isDone) {
-    actionHTML = `
-      <div class="answer-box">
-        <div class="answer-lbl">Answer</div>
-        <div class="answer-val">${part.answer}</div>
-        <div class="answer-interp">${part.interp}</div>
-      </div>
-      <div class="btn-row">
-        <button class="btn btn-jade" onclick="markDone('${q.id}')">Got it — mark done</button>
-        ${state.activePart < q.parts.length - 1
-          ? `<button class="btn btn-primary" onclick="markDone('${q.id}')">Got it — next part →</button>`
-          : ''}
-      </div>`;
+    actionHTML = `<div class="answer-box">
+      <div class="answer-lbl">Answer</div>
+      <div class="answer-val">${part.answer}</div>
+      <div class="answer-interp">${part.interp}</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-jade" onclick="markDone('${q.id}')">Got it — mark done</button>
+      ${state.activePart<q.parts.length-1?`<button class="btn btn-primary" onclick="markDone('${q.id}')">Got it — next part →</button>`:''}
+    </div>`;
   } else {
-    actionHTML = `
-      <div class="answer-box">
-        <div class="answer-lbl">Answer</div>
-        <div class="answer-val">${part.answer}</div>
-        <div class="answer-interp">${part.interp}</div>
-      </div>
-      <div class="btn-row">
-        ${state.activePart < q.parts.length - 1
-          ? `<button class="btn btn-primary" onclick="goNextPart(${state.activePart + 1})">Next part →</button>`
-          : renderCongratsHTML(q)}
-      </div>`;
-  }
-
-  if (revealed === 0) {
-    actionHTML = `<p class="reveal-hint">Click "Show step 1" to walk through the math one step at a time.</p>
-    <button class="btn btn-ghost" onclick="revealStep('${q.id}')">Show step 1 of ${part.steps.length}</button>`;
+    actionHTML = `<div class="answer-box">
+      <div class="answer-lbl">Answer</div>
+      <div class="answer-val">${part.answer}</div>
+      <div class="answer-interp">${part.interp}</div>
+    </div>
+    <div class="btn-row">
+      ${state.activePart<q.parts.length-1
+        ?`<button class="btn btn-primary" onclick="goNextPart(${state.activePart+1})">Next part →</button>`
+        :renderCongrats(q)}
+    </div>`;
   }
 
   document.getElementById('q-content').innerHTML = `
@@ -1365,120 +1090,82 @@ function renderQuestion() {
       <div class="q-card-header">
         <div class="q-card-meta">
           <span class="badge badge-num">${q.num}</span>
-          <span class="badge ${q.diff === 'beginner' ? 'badge-diff-b' : 'badge-diff-i'}">${q.diff}</span>
+          <span class="badge ${q.diff==='beginner'?'badge-diff-b':'badge-diff-i'}">${q.diff}</span>
           <span class="badge badge-topic">${q.topic}</span>
         </div>
         <div class="q-card-title">${q.title}</div>
       </div>
       <div class="q-card-body">
-        <div class="scenario-box">
-          <div class="scenario-label">Scenario</div>
-          ${q.scenario}
-        </div>
-
+        <div class="scenario-box"><div class="scenario-label">Scenario</div>${q.scenario}</div>
+        ${buildDeepExplainer(q.id)}
         <div class="context-section">
           <div class="context-tabs">
-            ${['what','why','who','when','how'].map(t => `
-              <button class="ctx-tab ${state.activeTab === t ? 'active' : ''}" onclick="switchTab('${t}')">
-                ${t === 'how' ? 'How to solve' : t.charAt(0).toUpperCase() + t.slice(1)}
-              </button>`).join('')}
+            ${['what','why','who','when','how'].map(t=>`
+              <button class="ctx-tab ${state.activeTab===t?'active':''}" onclick="switchTab('${t}')">${t==='how'?'How to solve':t.charAt(0).toUpperCase()+t.slice(1)}</button>`).join('')}
           </div>
           <div class="ctx-content ${ctxClass[state.activeTab]}">${ctx}</div>
         </div>
-
         <div class="parts-nav">
-          ${q.parts.map((p, i) => {
-            const done = state.partsDone[key(q.id, i)];
-            return `<button class="part-btn ${i === state.activePart ? 'active' : ''} ${done ? 'done' : ''}"
-              onclick="switchPart(${i})">${p.label}${done ? ' ✓' : ''}</button>`;
+          ${q.parts.map((p,i)=>{
+            const done=state.partsDone[key(q.id,i)];
+            return `<button class="part-btn ${i===state.activePart?'active':''} ${done?'done':''}" onclick="switchPart(${i})">${p.label}${done?' ✓':''}</button>`;
           }).join('')}
         </div>
-
         <div class="part-q-text">${part.q}</div>
-
-        <div class="formula-box">
-          <div class="formula-lbl">${part.formula.label}</div>
-          <div class="formula-expr">${part.formula.expr}</div>
-        </div>
-
-        <div class="calc-area">${stepsHTML || ''}</div>
-
+        ${buildFormulaHTML(part.formula)}
+        ${buildVarDefs(part.varKeys)}
+        <div class="calc-area" id="steps-area">${stepsHTML}</div>
         ${actionHTML}
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
-function renderCongratsHTML(q) {
-  const allDone = q.parts.every((_, i) => state.partsDone[key(q.id, i)]);
+function renderCongrats(q) {
+  const allDone = q.parts.every((_,i)=>state.partsDone[key(q.id,i)]);
   if (!allDone) return '';
-  const chQs = QUESTIONS.filter(qq => qq.ch === q.ch);
-  const nextQ = chQs[chQs.indexOf(q) + 1];
-  return `<div class="congrats-box">
+  const chQs = QUESTIONS.filter(qq=>qq.ch===q.ch);
+  const nextQ = chQs[chQs.indexOf(q)+1];
+  return `<div class="congrats-box" style="width:100%;margin-top:0">
     <div class="congrats-title">Problem complete!</div>
     <div class="congrats-sub">You worked through all ${q.parts.length} parts of <em>${q.title}</em>.</div>
-    <div class="btn-row" style="justify-content:center">
-      ${nextQ ? `<button class="btn btn-jade" onclick="switchQ('${nextQ.id}')">Next: ${nextQ.num} →</button>` : ''}
-    </div>
+    ${nextQ?`<button class="btn btn-jade" onclick="switchQ('${nextQ.id}')">Next: ${nextQ.num} →</button>`:''}
   </div>`;
 }
 
-function renderAll() {
-  renderSidebar();
-  renderStats();
-  renderQuestion();
-}
+function renderAll() { renderSidebar(); renderStats(); renderQuestion(); }
 
 // ── ACTIONS ───────────────────────────────────────────────────────────────
 function switchChapter(id) {
-  state.activeCh = id;
-  const first = QUESTIONS.find(q => q.ch === id);
-  if (first) { state.activeQ = first.id; state.activePart = 0; }
+  state.activeCh=id;
+  const first=QUESTIONS.find(q=>q.ch===id);
+  if(first){state.activeQ=first.id;state.activePart=0;}
   renderAll();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-
 function switchQ(id) {
-  state.activeQ = id;
-  state.activePart = 0;
+  state.activeQ=id;state.activePart=0;
   renderAll();
-  document.getElementById('q-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.getElementById('q-content').scrollIntoView({behavior:'smooth',block:'start'});
 }
-
-function switchPart(i) {
-  state.activePart = i;
-  renderQuestion();
-}
-
-function switchTab(t) {
-  state.activeTab = t;
-  renderQuestion();
-}
-
+function switchPart(i) { state.activePart=i; renderQuestion(); }
+function switchTab(t) { state.activeTab=t; renderQuestion(); }
 function revealStep(qId) {
-  const k = key(qId, state.activePart);
-  state.stepsRevealed[k] = (state.stepsRevealed[k] || 0) + 1;
+  const k=key(qId,state.activePart);
+  state.stepsRevealed[k]=(state.stepsRevealed[k]||0)+1;
   renderQuestion();
 }
-
 function markDone(qId) {
-  const k = key(qId, state.activePart);
-  state.partsDone[k] = true;
-  if (state.activePart < QUESTIONS.find(q => q.id === qId).parts.length - 1) {
+  const k=key(qId,state.activePart);
+  state.partsDone[k]=true;
+  const q=QUESTIONS.find(q=>q.id===qId);
+  if(state.activePart<q.parts.length-1){
     state.activePart++;
-    if (!state.stepsRevealed[key(qId, state.activePart)]) {
-      state.stepsRevealed[key(qId, state.activePart)] = 0;
-    }
+    if(!state.stepsRevealed[key(qId,state.activePart)])state.stepsRevealed[key(qId,state.activePart)]=0;
   }
   renderAll();
 }
+function goNextPart(i) { state.activePart=i; renderAll(); }
 
-function goNextPart(i) {
-  state.activePart = i;
-  renderAll();
-}
-
-// ── INIT ─────────────────────────────────────────────────────────────────
 renderAll();
 </script>
 </body>
