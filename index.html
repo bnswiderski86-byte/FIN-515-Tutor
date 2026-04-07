@@ -1132,7 +1132,9 @@ function renderCongrats(q) {
   </div>`;
 }
 
-function renderAll() { renderSidebar(); renderStats(); renderQuestion(); }
+function save() { localStorage.setItem('mr_state', JSON.stringify({stepsRevealed: state.stepsRevealed, partsDone: state.partsDone})); }
+function load() { try { const s = JSON.parse(localStorage.getItem('mr_state')); if(s) { state.stepsRevealed = s.stepsRevealed; state.partsDone = s.partsDone; } } catch(e) {} }
+function renderAll() { save(); renderSidebar(); renderStats(); renderQuestion(); }
 
 // ── ACTIONS ───────────────────────────────────────────────────────────────
 function switchChapter(id) {
@@ -1166,7 +1168,7 @@ function markDone(qId) {
 }
 function goNextPart(i) { state.activePart=i; renderAll(); }
 
-renderAll();
+load(); renderAll();
 </script>
 </body>
 </html>
